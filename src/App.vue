@@ -10,5 +10,11 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+
+  #app:hover {
+    background-color: $color-black;
+    color: $color-white;
+  }
+
 </style>

@@ -1,20 +1,34 @@
 <template>
   <div id="app">
-    WELCOME TO MEETDANIEL - MY PERSONAL PORTFOLIO PAGE
+    
+    <Home />
+
+    <About />
+
+    <Projects />
+
+    <Contact />
+
+    <Footer />
+
   </div>
 </template>
 
 <script>
+  import Home from './components/sections/Home';
+  import About from './components/sections/About';
+  import Projects from './components/sections/Projects';
+  import Contact from './components/sections/Contact';
+  import Footer from './components/sections/Footer';
+
   export default {
-    name: 'app'
+    name: 'meetdaniel',
+    components: {
+      Home,
+      About,
+      Projects,
+      Contact,
+      Footer
+    }
   }
 </script>
-
-<style lang="scss">
-
-  #app:hover {
-    background-color: $color-black;
-    color: $color-white;
-  }
-
-</style>

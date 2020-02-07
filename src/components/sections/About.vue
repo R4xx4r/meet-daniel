@@ -1,6 +1,8 @@
 <template>
   <section class="block block--about" id="about">
-    ABOUT
+    <div class="content-wrapper">
+      ABOUT
+    </div>
   </section>
 </template>
 

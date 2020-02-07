@@ -1,6 +1,8 @@
 <template>
   <section class="block block--contact" id="contact">
-    CONTACT
+    <div class="content-wrapper">
+      CONTACT
+    </div>
   </section>
 </template>
 

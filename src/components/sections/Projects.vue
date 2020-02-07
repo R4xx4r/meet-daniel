@@ -1,6 +1,8 @@
 <template>
   <section class="block block--projects" id="projects">
-    PROJECTS
+    <div class="content-wrapper">
+      PROJECTS
+    </div>
   </section>
 </template>
 

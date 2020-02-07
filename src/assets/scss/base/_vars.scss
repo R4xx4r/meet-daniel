@@ -11,11 +11,18 @@ $color-evening: #192231;
 $color-stormy: #494E6B;
 $color-clean: #E8E8E8;
 $color-coral: #E14658;
+$color-new-grass: #86AC41;
 
 
 /* *************** */
 /*   BREAKPOINTS   */
 /* *************** */ 
-
 $breakpoint-tablet: 768px;
 $breakpoint-notebook: 1024px;
+
+
+/* *********************** */
+/*   MAX WIDTH / WRAPPER   */
+/* *********************** */
+$max-width-content-wrapper: 1200px;
+$max-width-content: 1200px;

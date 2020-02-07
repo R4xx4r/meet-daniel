@@ -1,5 +1,21 @@
 /* ********** */
 /*   COLORS   */
 /* ********** */
+
+/* basic colors */
 $color-white: #FFF;
 $color-black: #000;
+
+/* main color scheme */
+$color-evening: #192231;
+$color-stormy: #494E6B;
+$color-clean: #E8E8E8;
+$color-coral: #E14658;
+
+
+/* *************** */
+/*   BREAKPOINTS   */
+/* *************** */ 
+
+$breakpoint-tablet: 768px;
+$breakpoint-notebook: 1024px;

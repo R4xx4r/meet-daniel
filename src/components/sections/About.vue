@@ -1,5 +1,5 @@
 <template>
-  <section id="about">
+  <section class="block block--about" id="about">
     ABOUT
   </section>
 </template>
@@ -9,3 +9,7 @@
     name: 'md-about'
   }
 </script>
+
+<style lang="scss" scoped>
+  
+</style>

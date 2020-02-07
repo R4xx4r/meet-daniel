@@ -1,5 +1,5 @@
 <template>
-  <section id="contact">
+  <section class="block block--contact" id="contact">
     CONTACT
   </section>
 </template>
@@ -9,3 +9,9 @@
     name: 'md-contact'
   }
 </script>
+
+<style lang="scss" scoped>
+  .block {
+    background-color: $color-stormy;
+  }
+</style>

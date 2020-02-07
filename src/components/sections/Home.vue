@@ -1,5 +1,5 @@
 <template>
-  <section id="home">
+  <section class="block block--home" id="home">
     HOME
   </section>
 </template>
@@ -9,3 +9,10 @@
     name: 'md-home'
   }
 </script>
+
+<style lang="scss" scoped>
+  .block {
+    background-color: $color-evening;
+    color: $color-white;
+  }
+</style>

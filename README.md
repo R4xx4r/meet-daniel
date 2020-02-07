@@ -2,7 +2,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ddd38042-da46-47ba-bec5-9d31116ebf6d/deploy-status)](https://app.netlify.com/sites/meetdaniel/deploys)
 
 > Welcome to my personal portfolio page.
-> Welcome to [https://meetdaniel.netlify.com/](meetdaniel.netlify.com)
+> Welcome to [https://meetdaniel.netlify.com/](https://meetdaniel.netlify.com/)
 
 This page is built with [Vue.js](https://vuejs.org/) and created via [Vue CLI](https://cli.vuejs.org/). For more infos take a look at their pages. They have great docs! :thumbsup: :muscle: 
 <br>

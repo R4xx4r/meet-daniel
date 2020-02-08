@@ -36,13 +36,14 @@
 </script>
 
 <style lang="scss" scoped>
-  .block {
+  .block--home {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: calc(100vh + 60px);
+    height: calc(100vh + #{$height-nav-main});
     color: $color-white;
+    padding: 0;
   }
 
   .canvas {
@@ -61,11 +62,19 @@
 
   .content {
     text-align: center;
+    transform: translateY(-$height-nav-main);
   }
 
   .content__text {
-    font-size: 48px;
-    line-height: 54px;
+    font-size: 38px;
+    line-height: 42px;
+    padding: 0 10px;
+
+    @media(min-width: $breakpoint-tablet) {
+      font-size: 48px;
+      line-height: 54px;
+      padding: 0;
+    }
   }
 
   .content__button {
@@ -74,8 +83,8 @@
 
   .button__link {
     position: relative;
-    padding: 12px 30px;
-    width: 250px;
+    padding: 12px 45px 12px 30px;
+    width: 285px;
     margin: 0 auto;
     border: 2px solid $color-white;
     background-color: transparent;
@@ -83,6 +92,11 @@
     text-align: left;
     transition: background-color .25s ease-in-out,
                 border .25s ease-in-out;
+
+    @media(min-width: $breakpoint-tablet) {
+      padding: 12px 30px;
+      width: 250px;
+    }
 
     &:hover {
       background-color: $color-new-grass;
@@ -104,7 +118,7 @@
   .nav--main {
     position: absolute;
     bottom: 0;
-    height: 60px;
+    height: $height-nav-main;
     width: 100%;
     align-items: center;
     justify-content: center;

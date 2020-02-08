@@ -19,10 +19,18 @@
 
     <nav class="nav nav--main">
       <ul class="menu">
-        <li class="menu__item">Home</li>
-        <li class="menu__item">Über mich</li>
-        <li class="menu__item">Projekte</li>
-        <li class="menu__item">Kontakt</li>
+        <li class="menu__item menu__item--active item">
+          <a class="item__link link" href="#home">Home</a>
+        </li>
+        <li class="menu__item item">
+          <a class="item__link link" href="#about">Über mich</a>
+        </li>
+        <li class="menu__item item">
+          <a class="item__link link" href="#projects">Projekte</a>
+        </li>
+        <li class="menu__item item">
+          <a class="item__link link" href="#contact">Kontakt</a>
+        </li>
       </ul>
     </nav>
 
@@ -130,6 +138,23 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+  }
+
+  .menu__item {
+    margin: 0 20px;
+    color: inherit;
+    transition: color .25s ease-in-out;
+
+    &:hover {
+      color: $color-new-grass;
+    }
+  }
+  .menu__item--active {
+    color: $color-new-grass;
+  }
+
+  .item__link {
+    text-transform: uppercase;
   }
 
 </style>

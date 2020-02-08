@@ -20,16 +20,16 @@
     <nav class="nav nav--main">
       <ul class="menu">
         <li class="menu__item menu__item--active item">
-          <a class="item__link link" href="#home">Home</a>
+          <a class="item__link link" href="#home" v-smooth-scroll>Home</a>
         </li>
         <li class="menu__item item">
-          <a class="item__link link" href="#about">Über mich</a>
+          <a class="item__link link" href="#about" v-smooth-scroll>Über mich</a>
         </li>
         <li class="menu__item item">
-          <a class="item__link link" href="#projects">Projekte</a>
+          <a class="item__link link" href="#projects" v-smooth-scroll>Projekte</a>
         </li>
         <li class="menu__item item">
-          <a class="item__link link" href="#contact">Kontakt</a>
+          <a class="item__link link" href="#contact" v-smooth-scroll>Kontakt</a>
         </li>
       </ul>
     </nav>
@@ -65,7 +65,7 @@
 
   .content-wrapper {
     position: relative;
-    max-width: 600px;
+    max-width: 700px;
   }
 
   .content {
@@ -74,6 +74,7 @@
   }
 
   .content__text {
+    font-weight: $font-weight-bold;
     font-size: 38px;
     line-height: 42px;
     padding: 0 10px;
@@ -92,7 +93,7 @@
   .button__link {
     position: relative;
     padding: 12px 45px 12px 30px;
-    width: 285px;
+    width: 290px;
     margin: 0 auto;
     border: 2px solid $color-white;
     background-color: transparent;
@@ -103,7 +104,6 @@
 
     @media(min-width: $breakpoint-tablet) {
       padding: 12px 30px;
-      width: 250px;
     }
 
     &:hover {
@@ -115,7 +115,7 @@
   .icon--arrow {
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: 30px;
     transform: translateY(-50%);
     transition: transform .35s ease-in-out;
   }
@@ -131,6 +131,7 @@
     align-items: center;
     justify-content: center;
     background-color: $color-evening;
+    border-bottom: 2px solid $color-coral;
   }
 
   .menu {

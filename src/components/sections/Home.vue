@@ -19,17 +19,8 @@
 
     <nav class="nav nav--main">
       <ul class="menu">
-        <li class="menu__item menu__item--active item">
-          <a class="item__link link" href="#home" v-smooth-scroll>Home</a>
-        </li>
-        <li class="menu__item item">
-          <a class="item__link link" href="#about" v-smooth-scroll>Über mich</a>
-        </li>
-        <li class="menu__item item">
-          <a class="item__link link" href="#projects" v-smooth-scroll>Projekte</a>
-        </li>
-        <li class="menu__item item">
-          <a class="item__link link" href="#contact" v-smooth-scroll>Kontakt</a>
+        <li class="menu__item item" :class="{'menu__item--active': selectedIndex == index}" v-for="(menuItem,index) in menuItems" :key="index">
+          <a class="item__link link" @click="setActiveIndex(index)" :href="menuItem.href" v-smooth-scroll>{{ menuItem.title }}</a>
         </li>
       </ul>
     </nav>
@@ -42,10 +33,29 @@
 
   export default {
     name: 'md-home',
+    data() {
+      return {
+        selectedIndex: 0
+      }
+    },
+    props: {
+      menuItems: {
+        type: Array,
+        default: () => {[
+          {
+            title: '',
+            href:''
+          }
+        ]}
+      }
+    },
     mounted() {
       this.initParticles();
     },
     methods: {
+      setActiveIndex(index) {
+        this.selectedIndex = index;
+      },
       initParticles() {
         window.particlesJS("particles-js", {
           "particles": {

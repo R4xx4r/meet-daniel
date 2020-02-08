@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     
-    <Home />
+    <Home :menuItems="menuItems" />
 
     <About />
 
@@ -29,6 +29,28 @@
       Projects,
       Contact,
       Footer
+    },
+    data() {
+      return {
+        menuItems: [
+          {
+           title: 'Home',
+           href: '#home'
+          },
+          {
+           title: 'Über mich',
+           href: '#about'
+          },
+          {
+           title: 'Projekte',
+           href: '#projects'
+          },
+          {
+           title: 'Kontakt',
+           href: '#contact' 
+          }
+        ]
+      }
     }
   }
 </script>

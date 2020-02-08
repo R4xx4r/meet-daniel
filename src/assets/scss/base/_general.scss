@@ -1,0 +1,19 @@
+.highlight {
+  color: $color-new-grass;
+}
+
+.link {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+/* SVG's */
+.icon {
+  display: inline-block;
+}
+
+.icon--arrow {
+  width: 14px;
+  height: 14px;
+}

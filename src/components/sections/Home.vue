@@ -1,9 +1,9 @@
 <template>
-  <section class="block block--home" id="home">
+  <section class="block block--home home" id="home">
     
     <div class="canvas" id="particles-js"></div>
 
-    <div class="content-wrapper content">
+    <div class="content-wrapper home__content content">
       <div class="content__text">
         Hallo, Ich heiße <span class="highlight underline">Daniel Murth</span>
         und bin Web Developer.
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <Navigation :menu="menu" />
+    <Navigation class="home__navigation" :menu="menu" />
 
   </section>
 </template>

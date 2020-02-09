@@ -17,25 +17,43 @@
       </div>
     </div>
 
-    <nav class="nav nav--main">
-      <ul class="menu">
-        <li class="menu__item item" :class="{'menu__item--active': selectedIndex == index}" v-for="(menuItem,index) in menuItems" :key="index">
-          <a class="item__link link" @click="setActiveIndex(index)" :href="menuItem.href" v-smooth-scroll>{{ menuItem.title }}</a>
-        </li>
-      </ul>
-    </nav>
+    <Navigation :menu="menu" />
 
   </section>
 </template>
 
 <script>
+  import Navigation from '../partials/Navigation';
   import 'particles.js';
 
   export default {
     name: 'md-home',
+    components: {
+      Navigation
+    },
     data() {
       return {
-        selectedIndex: 0
+        menu: {
+          identifier: 'main',
+          items:[
+            {
+             title: 'Home',
+             href: '#home'
+            },
+            {
+             title: 'Über mich',
+             href: '#about'
+            },
+            {
+             title: 'Projekte',
+             href: '#projects'
+            },
+            {
+             title: 'Kontakt',
+             href: '#contact' 
+            }
+          ]
+        } 
       }
     },
     props: {
@@ -53,9 +71,6 @@
       this.initParticles();
     },
     methods: {
-      setActiveIndex(index) {
-        this.selectedIndex = index;
-      },
       initParticles() {
         window.particlesJS("particles-js", {
           "particles": {
@@ -252,40 +267,4 @@
   .button__link:hover .icon--arrow {
     transform: translateY(-50%) rotate(90deg);
   }
-
-  .nav--main {
-    position: absolute;
-    bottom: 0;
-    height: $height-nav-main;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    background-color: $color-evening;
-    border-bottom: 2px solid $color-coral;
-  }
-
-  .menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-
-  .menu__item {
-    margin: 0 20px;
-    color: inherit;
-    transition: color .25s ease-in-out;
-
-    &:hover {
-      color: $color-new-grass;
-    }
-  }
-  .menu__item--active {
-    color: $color-new-grass;
-  }
-
-  .item__link {
-    text-transform: uppercase;
-  }
-
 </style>

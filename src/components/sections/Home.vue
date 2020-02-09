@@ -3,18 +3,22 @@
     
     <div class="canvas" id="particles-js"></div>
 
-    <div class="content-wrapper home__content content">
-      <div class="content__text">
-        Hallo, Ich heiße <span class="highlight underline">Daniel Murth</span>
-        und bin Web Developer.
-      </div>
-      <div class="content__button button">
-        <a class="button__link link" href="#projects" v-smooth-scroll="{duration: 1200}">
-          Zu meinen Projekten
+    <div class="home__content-wrapper content-wrapper">
+      <div class="home__content content">
 
-          <svg class="icon icon--arrow" xmlns="http://www.w3.org/2000/svg" width="44.952" height="44.952" viewBox="0 0 44.952 44.952"><path fill="currentColor" d="M44.952 22.108c0-1.25-.478-2.424-1.362-3.308L30.627 5.831a2.5 2.5 0 00-3.536 0 2.511 2.511 0 000 3.546l10.574 10.57H2.484C1.102 19.948 0 21.081 0 22.464v.028c0 1.382 1.102 2.523 2.484 2.523h35.182L27.094 35.579a2.504 2.504 0 003.538 3.54l12.958-12.97a4.633 4.633 0 001.362-3.309v-.732z"/></svg>
-        </a>
+        <div class="content__text">
+          Hallo, Ich heiße <span class="highlight underline">Daniel Murth</span>
+          und bin Web Developer.
+        </div>
+        <div class="content__button button">
+          <a class="button__link link" href="#projects" v-smooth-scroll="{duration: 1200}">
+            Zu meinen Projekten
+
+            <svg class="icon icon--arrow" xmlns="http://www.w3.org/2000/svg" width="44.952" height="44.952" viewBox="0 0 44.952 44.952"><path fill="currentColor" d="M44.952 22.108c0-1.25-.478-2.424-1.362-3.308L30.627 5.831a2.5 2.5 0 00-3.536 0 2.511 2.511 0 000 3.546l10.574 10.57H2.484C1.102 19.948 0 21.081 0 22.464v.028c0 1.382 1.102 2.523 2.484 2.523h35.182L27.094 35.579a2.504 2.504 0 003.538 3.54l12.958-12.97a4.633 4.633 0 001.362-3.309v-.732z"/></svg>
+          </a>
+        </div>
       </div>
+
     </div>
 
     <Navigation class="home__navigation" :menu="menu" />
@@ -207,9 +211,9 @@
     background-color: $color-black;
   }
 
-  .content-wrapper {
-    position: relative;
+  .home__content-wrapper {
     max-width: 700px;
+    position: relative;
   }
 
   .content {

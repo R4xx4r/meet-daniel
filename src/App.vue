@@ -9,7 +9,7 @@
 
     <Contact />
 
-    <Footer :menuItems="footerMenuItems" />
+    <Footer />
 
   </div>
 </template>

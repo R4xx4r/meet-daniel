@@ -3,7 +3,12 @@
   <nav class="nav" :class="getClassName()">
     <ul class="menu">
       <li class="menu__item item" :class="{'menu__item--active': selectedIndex == index}" v-for="(menuItem,index) in menu.items" :key="index">
-        <a class="item__link link" @click="setActiveIndex(index)" :href="menuItem.href" v-smooth-scroll>{{ menuItem.title }}</a>
+        <template v-if="isAnchorLink(menuItem.href)">
+          <a class="item__link link" @click="setActiveIndex(index)" :href="menuItem.href" v-smooth-scroll>{{ menuItem.title }}</a>
+        </template>
+        <template v-else>
+          <a class="item__link link" :href="menuItem.href" target="_blank">{{ menuItem.title }}</a>
+        </template>
       </li>
     </ul>
   </nav>
@@ -29,6 +34,9 @@
         if (this.menu.identifier) {
           return `nav--${this.menu.identifier}`;
         }
+      },
+      isAnchorLink(href){
+        return href.startsWith('#');
       },
       setActiveIndex(index) {
         this.selectedIndex = index;

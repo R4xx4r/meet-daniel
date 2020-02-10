@@ -94,10 +94,20 @@
     height: 100%;
   }
 
+  .nav--social .menu__item {
+    margin: 0 25px;
+  }
   .menu__item {
     margin: 0 20px;
     color: inherit;
     transition: color .25s ease-in-out;
+
+    &:first-child {
+      margin-left: 0; 
+    }
+    &:last-child {
+      margin-right: 0; 
+    }
 
     &:hover {
       color: $color-new-grass;
@@ -105,10 +115,6 @@
   }
   .menu__item--active {
     color: $color-new-grass;
-  }
-  
-  .nav--social .menu__item {
-    margin: 0 25px;
   }
 
   .item__link {

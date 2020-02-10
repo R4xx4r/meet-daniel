@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "icons": "vsvg -s src/assets/svg -t src/components/icons",
+    "serve": "npm run icons && vue-cli-service serve",
+    "build": "npm run icons && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.4.4",
     "particles.js": "^2.0.0",
     "vue": "^2.6.10",
+    "vue-svgicon": "^3.2.6",
     "vue2-smooth-scroll": "^1.2.0"
   },
   "devDependencies": {

@@ -25,10 +25,25 @@ After installing our project you have some npm scripts available:
 
 | command | description |
 | ---------- | ---------- |
+| `npm run icons` | Generates icon components from SVG's in folder `assets/svg` |
 | `npm run serve` | Compiles and hot-reloads for development |
 | `npm run build` | Compiles and minifies for production |
 | `npm run lint` | Lints and fixes files |
 
+
+## SVG handling
+I use a npm package called `vue-svgicon`. If you have svg's which you wanna use in one of your components take following steps:
+* create folder `assets/svg` (you can adapt all this in package.json scripts)
+* if you adapt your output path in package.json please also adapt .gitignore so the generated files don't increase your repo size :wink:
+* copy your SVG's in this folder
+* run the script `npm run icons`
+* go to the component you wanna use your svg
+* import them `import [PATH_TO_ASSETS]/icons` or just one specific `[PATH_TO_ASSETS]/icons/[SPECIFIC_ONE]`
+* use them like ` <svgicon name="[SVG_NAME]" height="16" width="16"></svgicon>`
+<br>
+The script runs automatically once you started `npm run serve` or `npm run build`. If you add a new SVG after this (especially for the serve command) you have to run it manually again.
+<br>
+For more info please look at the npm page [here](https://www.npmjs.com/package/vue-svgicon).
 
 ## Customize configuration
 If you wanna adapt the basic configuration to your needs take a look at [Vue CLI configuration reference](https://cli.vuejs.org/config/).

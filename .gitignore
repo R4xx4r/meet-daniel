@@ -1,4 +1,8 @@
-.DS_Store
+# app specific excludes
+src/components/icons
+
+# basic exclude
+DS_Store
 node_modules
 /dist
 

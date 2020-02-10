@@ -78,7 +78,7 @@
 
 <style lang="scss" scoped>
   .footer {
-    padding: 100px 0 35px;
+    padding: 75px 0 35px;
     background-color: $color-evening;
     color: $color-clean;
   }
@@ -95,7 +95,7 @@
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%, -250%);
+    transform: translate(-50%, -200%);
     background-color: $color-coral;
     color: $color-white;
     width: 40px;

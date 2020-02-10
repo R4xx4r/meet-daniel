@@ -124,7 +124,7 @@
                 transform .25s ease-in-out;
 
     &:hover {
-      background-color: $color-coral;
+      background-color: $color-new-grass;
       transform: scale(.9);
     }
   }

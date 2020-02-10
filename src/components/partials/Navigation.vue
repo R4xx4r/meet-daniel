@@ -3,12 +3,22 @@
   <nav class="nav" :class="getClassName()">
     <ul class="menu">
       <li class="menu__item item" :class="{'menu__item--active': selectedIndex == index}" v-for="(menuItem,index) in menu.items" :key="index">
-        <template v-if="isAnchorLink(menuItem.href)">
+
+        <template v-if="isAnchorLink(menuItem.href)"> <!-- internal link -->
           <a class="item__link link" @click="setActiveIndex(index)" :href="menuItem.href" v-smooth-scroll>{{ menuItem.title }}</a>
         </template>
-        <template v-else>
-          <a class="item__link link" :href="menuItem.href" target="_blank">{{ menuItem.title }}</a>
+        <template v-else> <!-- external link -->
+          <a class="item__link link" :href="menuItem.href" target="_blank">
+            <!-- check if social media area or normal link area -->
+            <template v-if="isSocialMediaNav()">
+              
+            </template>
+            <template v-else>
+              {{ menuItem.title }}
+            </template>
+          </a>
         </template>
+        
       </li>
     </ul>
   </nav>
@@ -20,7 +30,8 @@
     name: 'navigation',
     data() {
       return {
-        selectedIndex: 0
+        selectedIndex: 0,
+        svg: ''
       }
     },
     props: {
@@ -37,6 +48,11 @@
       },
       isAnchorLink(href){
         return href.startsWith('#');
+      },
+      isSocialMediaNav() {
+        if (this.menu.identifier) {
+          return this.menu.identifier.toLowerCase() == 'social';
+        }
       },
       setActiveIndex(index) {
         this.selectedIndex = index;

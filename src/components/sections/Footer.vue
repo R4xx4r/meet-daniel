@@ -29,7 +29,7 @@
     data() {
       return {
         menu: {
-          identifier: 'footer',
+          identifier: 'social',
           items:[
             {
               title: 'LinkedIn',
@@ -101,6 +101,11 @@
     width: 40px;
     height: 50px;
     cursor: pointer;
+    transition: background-color .25s ease-in-out;
+
+    &:hover {
+      background-color: darken($color-coral, 3);
+    }
   }
 
   .icon {
@@ -108,6 +113,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(90deg);
+    transition: transform .25s ease-in-out;
+  }
+  .content__back-to-top:hover .icon {
+    transform: translate(-50%, -60%) rotate(90deg);
   }
 
   .content__copyright { 

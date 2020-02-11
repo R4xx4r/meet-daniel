@@ -4,7 +4,7 @@
       <div class="footer__content content">
         
         <div class="content__back-to-top" title="Zurück zum Start" @click="scrollToTop()">
-          <svg class="icon icon--arrow-to-top" xmlns="http://www.w3.org/2000/svg" width="220.682" height="220.682" viewBox="0 0 220.682 220.682"><path fill="currentColor" d="M99.702 210.043l28.284-28.285-71.417-71.417 71.417-71.417-28.284-28.285L0 110.341z"/><path fill="currentColor" d="M192.398 10.639l-99.703 99.702 99.703 99.702 28.284-28.285-71.418-71.417 71.418-71.417z"/></svg>
+          <svgicon class="icon icon--arrow-top" name="arrow-top"></svgicon>
         </div>
 
         <Navigation class="footer__nav" :menu="menu" />
@@ -20,6 +20,7 @@
 
 <script>
   import Navigation from '../partials/Navigation';
+  import '../icons/arrow-top';
 
   export default {
     name: 'md-footer',

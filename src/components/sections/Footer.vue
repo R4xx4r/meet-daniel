@@ -96,7 +96,7 @@
     top: 0;
     left: 50%;
     transform: translate(-50%, -200%);
-    background-color: $color-coral;
+    background-color: $color-new-grass;
     color: $color-white;
     width: 40px;
     height: 50px;
@@ -104,7 +104,7 @@
     transition: background-color .25s ease-in-out;
 
     &:hover {
-      background-color: darken($color-coral, 3);
+      background-color: darken($color-new-grass, 5);
     }
   }
 
@@ -127,6 +127,6 @@
   }
 
   .highlight {
-    color: $color-coral;
+    color: $color-new-grass;
   }
 </style>

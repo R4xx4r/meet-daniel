@@ -1,14 +1,31 @@
 <template>
-  <section class="block block--projects" id="projects">
+  <section class="block block--projects projects" id="projects">
     <div class="content-wrapper">
-      PROJECTS
+      <h2 class="headline headline--2">Projects</h2>
+
+        <div class="projects__projects-wrapper">
+          <Project v-for="(project, index) in projects" :key="index" />
+        </div>
+      
     </div>
   </section>
 </template>
 
 <script>
+  import Project from '../partials/Project';
+
   export default {
-    name: 'md-projects'
+    name: 'md-projects',
+    components: {
+      Project
+    },
+    data() {
+      return {
+        project: [
+          
+        ]
+      }
+    }
   }
 </script>
 

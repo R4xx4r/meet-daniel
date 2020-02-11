@@ -97,20 +97,15 @@
   .nav--social .menu__item {
     margin: 0 25px;
   }
+
   .menu__item {
     margin: 0 20px;
-    color: inherit;
-    transition: color .25s ease-in-out;
 
     &:first-child {
       margin-left: 0; 
     }
     &:last-child {
       margin-right: 0; 
-    }
-
-    &:hover {
-      color: $color-new-grass;
     }
   }
   .menu__item--active {
@@ -120,7 +115,17 @@
   .item__link {
     text-transform: uppercase;
     position: relative;
+    color: $color-white;
+    transition: color .25s ease-in-out;
   }
+
+  .menu__item--active .item__link {
+    color: $color-new-grass;
+  }
+  .menu__item:hover .item__link {
+    color: $color-new-grass;
+  }
+
   .nav--social .item__link {
     width: 55px;
     height: 55px;

@@ -38,8 +38,7 @@
     name: 'navigation',
     data() {
       return {
-        selectedIndex: 0,
-        svg: ''
+        selectedIndex: 0
       }
     },
     props: {

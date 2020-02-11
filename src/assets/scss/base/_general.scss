@@ -1,3 +1,25 @@
+.headline {
+  text-transform: uppercase;
+  font-weight: $font-weight-bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.headline--2 {
+  font-size: 30px;
+  line-height: 36px;
+
+  &::after {
+    content: '';
+    bottom: 0;
+    margin-top: 10px;
+    height: 3px;
+    width: 70px;
+    background-color: $color-dark-gray;
+  }
+}
+
 .highlight {
   color: $color-new-grass;
 }

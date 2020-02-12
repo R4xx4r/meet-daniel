@@ -104,11 +104,11 @@
             ]
           },
           {
-            categoryName: 'WordPress',
+            categoryName: 'Wordpress',
             projects: [
               {
                 title: 'Galaxy Fitness',
-                subtitle: 'WordPress Frontend & Backend',
+                subtitle: 'Wordpress Frontend & Backend',
                 image: 'Galaxy_Fitness.png',
                 overlay: {
                   intro: 'Website Relaunch',
@@ -117,12 +117,12 @@
                 }
               },
               {
-                title: 'Coaching Consultung',
-                subtitle: 'WordPress Backend',
+                title: 'Coaching Consulting',
+                subtitle: 'Wordpress Backend',
                 image: 'Coaching_Consulting.png',
                 overlay: {
                   intro: 'Website Relaunch',
-                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. Dieses Projekt war eines meiner ersten Berührungspunkte mit dem WordPress Backend. Die Module basieren auf dem WP-Plugin "Advanced Custom Fields".',
+                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. Dieses Projekt war eines meiner ersten Berührungspunkte mit dem Wordpress Backend. Die Module basieren auf dem WP-Plugin "Advanced Custom Fields".',
                   href: 'https://www.coaching-consulting.at/'
                 }
               }

@@ -1,11 +1,13 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import App from './App.vue';
 import vueSmoothScroll from 'vue2-smooth-scroll'; // https://www.npmjs.com/package/vue2-smooth-scroll
 import SvgIcon from 'vue-svgicon'; // https://www.npmjs.com/package/vue-svgicon
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-Vue.use(vueSmoothScroll)
+Vue.use(Vuex);
+Vue.use(vueSmoothScroll);
 Vue.use(SvgIcon, {
   tagName: 'svgicon',
   classPrefix: 'svgicon-'
@@ -13,4 +15,4 @@ Vue.use(SvgIcon, {
 
 new Vue({
   render: h => h(App),
-}).$mount('#app')
+}).$mount('#app');

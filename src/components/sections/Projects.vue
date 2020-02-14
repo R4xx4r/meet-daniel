@@ -51,7 +51,7 @@
                 title: 'Geppner Installationen',
                 subtitle: 'Nuxt.js',
                 image: 'Geppner_Installationen.jpg',
-                overlay: {
+                modal: {
                   intro: 'Website Relaunch',
                   description: ''
                 }
@@ -60,7 +60,7 @@
                 title: 'Eucerin Wissenswochen: Vitamin-C',
                 subtitle: 'Nuxt.js',
                 image: 'Eucerin_Wissenswochen_Vitamin_C.jpg',
-                overlay: {
+                modal: {
                   intro: 'Kampagnen Seite',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich ...',
                   href: 'https://www.eucerin.at/vitamin-c/'
@@ -70,7 +70,7 @@
                 title: 'Hansaplast #weitergehts: Colored',
                 subtitle: 'Nuxt.js',
                 image: 'Hansaplast_Weitergehts_Routine.jpg',
-                overlay: {
+                modal: {
                   intro: 'Kampagnen Seite',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich ...',
                   href: 'https://ext18-at.hansaplast.com/3/weitergehts/colored/'
@@ -85,7 +85,7 @@
                 title: 'Yoga Neufeld',
                 subtitle: 'HTML / SCSS / JS',
                 image: 'Yoga_Neufeld.jpg',
-                overlay: {
+                modal: {
                   intro: 'Website Relaunch',
                   description: '',
                   href: 'http://www.yoga-neufeld.at/'
@@ -95,7 +95,7 @@
                 title: 'Kurhotel Strobl',
                 subtitle: 'HTML / SCSS / JS',
                 image: 'Kurhotel_Strobl.jpg',
-                overlay: {
+                modal: {
                   intro: 'Website Relaunch',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich Teil der kompletten Umsetzung dieser Seite. Umgesetzt wurde das Projekt mit einem intern entwickelten System welches auf Webpack, Handlebars und HTML, SCSS und JS basiert.',
                   href: 'http://kurhotel-strobl.at/'
@@ -110,7 +110,7 @@
                 title: 'Galaxy Fitness',
                 subtitle: 'Wordpress Frontend & Backend',
                 image: 'Galaxy_Fitness.jpg',
-                overlay: {
+                modal: {
                   intro: 'Website Relaunch',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier in erster Linie als Frontender tätig, habe aber aucher alle Backend Tätigkeiten vorgenommen. Die einzelnen Module der Seite basieren auf dem WP-Plugin "Advanced Custom Fields".',
                   href: 'http://www.galaxy-fitness.at/'
@@ -120,7 +120,7 @@
                 title: 'Coaching Consulting',
                 subtitle: 'Wordpress Backend',
                 image: 'Coaching_Consulting.jpg',
-                overlay: {
+                modal: {
                   intro: 'Website Relaunch',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. Dieses Projekt war eines meiner ersten Berührungspunkte mit dem Wordpress Backend. Die Module basieren auf dem WP-Plugin "Advanced Custom Fields".',
                   href: 'https://www.coaching-consulting.at/'
@@ -135,7 +135,7 @@
                 title: 'Ottakringer',
                 subtitle: 'Typo3 Backend',
                 image: 'Ottakringer_Helles_ohne_Flasche_Kanne_Logo_PRINT.jpg',
-                overlay: {
+                modal: {
                   intro: 'Website Relaunch',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. Dieses Projekt wurde agil umgesetzt und war in enger Zusammenarbeit aller beteiligter Teams eine großartige Erfahrung.',
                   href: 'https://www.ottakringerbrauerei.at/'
@@ -145,7 +145,7 @@
                 title: 'Austrian Development Agency',
                 subtitle: 'Typo3 Backend',
                 image: 'Austrian_Development_Agency.jpg',
-                overlay: {
+                modal: {
                   intro: 'Website Relaunch',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. ',
                   href: 'https://www.entwicklung.at/'
@@ -155,7 +155,7 @@
                 title: 'Trans Austria Gasleitung GmbH',
                 subtitle: 'Typo3 Backend',
                 image: 'Trans_Austria_Gasleitung_GmbH.jpg',
-                overlay: {
+                modal: {
                   intro: 'Website Relaunch',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. ',
                   href: 'https://www.taggmbh.at/'

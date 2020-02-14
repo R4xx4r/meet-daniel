@@ -11,15 +11,36 @@
     </div>
 
     <div class="project__overlay project__overlay--bottom overlay">
-      <div class="overlay__button">mehr erfahren</div>
+      <div class="overlay__button" 
+        @click="showModal()" 
+      >mehr erfahren</div>
     </div>
+
+    <Modal
+      :title="project.title" 
+      :intro="project.modal.intro"
+      :description="project.modal.description"
+      :images="[]" 
+      @closed="closeModal()"
+      v-if="visible" />
+     
   </div>
 
 </template>
 
 <script>
+  import Modal from '../partials/Modal';
+
   export default {
     name: 'project',
+    components: {
+      Modal
+    },
+    data() {
+      return {
+        visible: false
+      }
+    },
     props: {
       project: {
         type: Object,
@@ -29,6 +50,16 @@
     methods: {
       getImageSrc(image) {
         return require(`@/assets/images/projects/${image}`);
+      },
+      showModal() {
+        this.$store.state.modalVisible = true;
+        this.visible = true;
+      },
+      closeModal() {
+        console.log('AAAA');
+        
+        this.$store.state.modalVisible = false;
+        this.visible = false;
       }
     }
   }

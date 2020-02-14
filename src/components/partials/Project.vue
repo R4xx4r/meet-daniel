@@ -11,9 +11,7 @@
     </div>
 
     <div class="project__overlay project__overlay--bottom overlay">
-      <div class="overlay__button" 
-        @click="showModal()" 
-      >mehr erfahren</div>
+      <div class="overlay__button" @click="showModal()">mehr erfahren</div>
     </div>
 
     <Modal
@@ -56,8 +54,6 @@
         this.visible = true;
       },
       closeModal() {
-        console.log('AAAA');
-        
         this.$store.state.modalVisible = false;
         this.visible = false;
       }

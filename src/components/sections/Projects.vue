@@ -4,6 +4,7 @@
       <h2 class="projects__headline headline headline--2">Projects</h2>
 
         <div class="projects__filters filters">
+          
           <div 
             class="filters__filter filter" 
             :class="{'filter--active': selectedIndex == index}" 
@@ -12,14 +13,15 @@
             @click="setActiveIndex(index)"
             v-text="category.categoryName"
           ></div>
+
         </div>
 
         <div class="projects__projects-wrapper">
+          
           <Project 
             v-for="(project, index) in categoriesWithProjects[selectedIndex]['projects']" 
             :key="index" 
-            :project="project" 
-          />
+            :project="project" />
         </div>
       
     </div>

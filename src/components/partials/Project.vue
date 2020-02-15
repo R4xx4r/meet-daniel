@@ -14,14 +14,16 @@
       <div class="overlay__button" @click="showModal()">mehr erfahren</div>
     </div>
 
-    <Modal
-      :title="project.title" 
-      :intro="project.modal.intro"
-      :description="project.modal.description"
-      :href="project.modal.href"
-      :images="getModalImagesSrc(project)" 
-      @closed="closeModal()"
-      v-if="visible" />
+    <transition name="fade">
+      <Modal
+        :title="project.title" 
+        :intro="project.modal.intro"
+        :description="project.modal.description"
+        :href="project.modal.href"
+        :images="getModalImagesSrc(project)" 
+        @closed="closeModal()"
+        v-if="visible" />
+    </transition>
      
   </div>
 
@@ -94,7 +96,7 @@
     }
 
     &:hover::before {
-      opacity: 1;
+      opacity: .95;
     }
   }
 
@@ -161,6 +163,14 @@
       color: $color-white;
       background-color: $color-new-grass;
     }
+  }
+
+  /* Vue intern fade effect */
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
   }
 
 </style>

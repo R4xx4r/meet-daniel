@@ -55,9 +55,19 @@
           this.$emit('closed');
         }
       };
+
+      const clickHandler = (e) => {
+        if(e.target.getAttribute('class') === 'modal') {
+          this.$emit('closed');
+        }
+      };
+
       document.addEventListener('keydown', escapeHandler);
+      document.addEventListener('click', clickHandler);
+      
       this.$once('hook:destroyed', () => {
         document.removeEventListener('keydown', escapeHandler);
+        document.removeEventListener('click', clickHandler);
       });
     },
     methods: {

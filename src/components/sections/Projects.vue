@@ -3,46 +3,49 @@
     <div class="content-wrapper">
       <h2 class="projects__headline headline headline--2">Projects</h2>
 
-        <div class="projects__filters filters">
+      <div class="projects__filters filters">
+        
+        <div class="filters__dropdown-wrapper" v-cloak>
           
-          <div class="filters__dropdown-wrapper" v-cloak>
-            
-            <select class="filters__dropdown" @change="setActiveIndex($event.target.value)" title="Wähle eine Kategorie">
-              <option
-                v-for="(category, index) in categoriesWithProjects" 
-                :key="index" 
-                :value="index"
-                v-text="category.categoryName"
-              ></option>
-            </select>
-
-          </div>
-
-          <div 
-            class="filters__filter filter" 
-            :class="{'filter--active': selectedIndex == index}" 
-            v-for="(category, index) in categoriesWithProjects" 
-            :key="index" 
-            @click="setActiveIndex(index)"
-            v-text="category.categoryName"
-          ></div>
+          <select class="filters__dropdown" @change="setActiveIndex($event.target.value)" title="Wähle eine Kategorie">
+            <option
+              v-for="(category, index) in categoriesWithProjects" 
+              :key="index" 
+              :value="index"
+              v-text="category.categoryName"
+            ></option>
+          </select>
 
         </div>
 
-        <div class="projects__projects-wrapper">
-          
-          <Project 
-            v-for="(project, index) in categoriesWithProjects[selectedIndex]['projects']" 
-            :key="index" 
-            :project="project" />
-        </div>
-      
+        <div 
+          class="filters__filter filter" 
+          :class="{'filter--active': selectedIndex == index}" 
+          v-for="(category, index) in categoriesWithProjects" 
+          :key="index" 
+          @click="setActiveIndex(index)"
+          v-text="category.categoryName"
+        ></div>
+
+      </div>
+
+      <div class="projects__projects-wrapper">
+        
+        <Project 
+          v-for="(project, index) in categoriesWithProjects[selectedIndex]['projects']" 
+          :key="index" 
+          :project="project" />
+      </div>
     </div>
+    
+    <svgicon preserveAspectRatio="none" class="icon icon--triangle" name="triangle"></svgicon>
+  
   </section>
 </template>
 
 <script>
   import Project from '../partials/Project';
+  import '../icons/triangle';
 
   export default {
     name: 'md-projects',
@@ -202,6 +205,13 @@
 <style lang="scss" scoped>
   .block--projects {
     background-color: $color-clean;
+    position: relative;
+    padding-bottom: 50px;
+  }
+
+  .icon--triangle {
+    position: absolute;
+    bottom: -50px;
   }
 
   /* FILTER STUFF */

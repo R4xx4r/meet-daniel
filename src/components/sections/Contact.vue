@@ -15,5 +15,6 @@
 <style lang="scss" scoped>
   .block {
     background-color: $color-stormy;
+    padding-top: 125px;
   }
 </style>

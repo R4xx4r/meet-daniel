@@ -18,6 +18,7 @@
       :title="project.title" 
       :intro="project.modal.intro"
       :description="project.modal.description"
+      :href="project.modal.href"
       :images="[]" 
       @closed="closeModal()"
       v-if="visible" />

@@ -3,6 +3,7 @@ html {
   font-family: $font-work-sans-regular;
   font-weight: $font-weight-regular;
   font-size: 16px;
+  line-height: 22px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -24,4 +25,10 @@ ol, ul {
 
 img {
   display: block;
+}
+
+a {
+  text-decoration: underline;
+  display: inline-block;
+  color: $color-new-grass;
 }

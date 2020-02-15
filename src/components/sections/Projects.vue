@@ -5,6 +5,19 @@
 
         <div class="projects__filters filters">
           
+          <div class="filters__dropdown-wrapper" v-cloak>
+            
+            <select class="filters__dropdown" @change="setActiveIndex($event.target.value)" title="Wähle eine Kategorie">
+              <option
+                v-for="(category, index) in categoriesWithProjects" 
+                :key="index" 
+                :value="index"
+                v-text="category.categoryName"
+              ></option>
+            </select>
+
+          </div>
+
           <div 
             class="filters__filter filter" 
             :class="{'filter--active': selectedIndex == index}" 
@@ -55,7 +68,7 @@
                 image: 'Geppner_Installationen.jpg',
                 modal: {
                   intro: 'Website Relaunch',
-                  description: ''
+                  description: 'Hier habe ich der alten Seite welche auf einem Online Webbaukasten basierte einen neuen Touch verliehen. Ich habe mich für Nuxt.js entschieden und der Seite einen modernen Anstrich verpasst.'
                 }
               },
               {
@@ -64,7 +77,7 @@
                 image: 'Eucerin_Wissenswochen_Vitamin_C.jpg',
                 modal: {
                   intro: 'Kampagnen Seite',
-                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich ...',
+                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> haben wir diese Nuxt.js Kampagnenseite umgesetzt. Die fertig gebuildete Seite wurde als Proxyframe in der Mutterseite eingebunden.',
                   href: 'https://www.eucerin.at/vitamin-c/'
                 }
               },
@@ -74,7 +87,7 @@
                 image: 'Hansaplast_Weitergehts_Routine.jpg',
                 modal: {
                   intro: 'Kampagnen Seite',
-                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich ...',
+                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> haben wir diese Nuxt.js Kampagnenseite umgesetzt. Die fertig gebuildete Seite wurde als Proxyframe in der Mutterseite eingebunden. Besonderheit ist ein Gewinnspiel bei welchem man per Drag & Drop Elemente richtig platzieren muss.',
                   href: 'https://ext18-at.hansaplast.com/3/weitergehts/colored/'
                 }
               }
@@ -89,7 +102,7 @@
                 image: 'Yoga_Neufeld.jpg',
                 modal: {
                   intro: 'Website Relaunch',
-                  description: '',
+                  description: 'Als eines meiner ersten Projekte habe ich der alten Yoga Neufeld einen neuen Anstrich verpasst. Hierzu habe ich ein fertiges Template von <a href="http://html5up.net" target="_blank">HTML5up</a> als Basis hergenommen, modifiziert und um neue "Module" erweitert.',
                   href: 'http://www.yoga-neufeld.at/'
                 }
               },
@@ -149,7 +162,7 @@
                 image: 'Austrian_Development_Agency.jpg',
                 modal: {
                   intro: 'Website Relaunch',
-                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. ',
+                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. Teil meiner Umsetzung war die Planung und Überlegung der einzelnen Content Elemente und wie man diese sinnvoll und intuitiv zur Verfügung stellen kann.',
                   href: 'https://www.entwicklung.at/'
                 }
               },
@@ -159,7 +172,7 @@
                 image: 'Trans_Austria_Gasleitung_GmbH.jpg',
                 modal: {
                   intro: 'Website Relaunch',
-                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. ',
+                  description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. Hier hatten wir die Herausforderung mehrere Schnittstellen zu integrieren um eine enorme Menge an sensiblen Daten schnell und strukturiert darzustellen.',
                   href: 'https://www.taggmbh.at/'
                 }
               }
@@ -199,6 +212,7 @@
   }
 
   .filters__filter {
+    display: none;
     margin: 0 20px;
     padding: 10px 20px;
     cursor: pointer;
@@ -212,6 +226,47 @@
     &:last-child {
       margin-right: 0;
     }
+
+    @media(min-width: $breakpoint-tablet) {
+      display: block;
+    }
+  }
+
+  .filters__dropdown-wrapper {
+    position: relative;
+    max-width: 250px;
+    width: 100%;
+    background-color: $color-white;
+    border: 1px solid darken($color-clean, 30%);
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 38px;
+      height: 100%;
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NCAzOCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMCAwaDQwYzIgMCA0IDIgNCA0djMwYzAgMi0yIDQtNCA0SDBWMHoiIGZpbGw9IiNGN0Y3RjciLz48cGF0aCBzdHJva2U9IiM4NkFDNDEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTYgMThsNiA2IDYtNiIvPjwvZz48L3N2Zz4=");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 45px 45px;
+      border-left: 1px solid darken($color-clean, 30%);
+      pointer-events: none;
+    }
+
+    @media(min-width: $breakpoint-tablet) {
+      display: none;
+    }
+  }
+
+  .filters__dropdown {
+    width: 100%;
+    padding: 10px 45px 10px 16px;
+    font-size: 16px;
+    color: $color-dark-gray;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
   }
 
   .filter--active {

@@ -19,7 +19,7 @@
       :intro="project.modal.intro"
       :description="project.modal.description"
       :href="project.modal.href"
-      :images="[]" 
+      :images="getModalImagesSrc(project)" 
       @closed="closeModal()"
       v-if="visible" />
      
@@ -57,6 +57,19 @@
       closeModal() {
         this.$store.state.modalVisible = false;
         this.visible = false;
+      },
+      getModalImagesSrc(project) {
+        let imagesSrc = [];
+        if (project.modal.images) {
+          project.modal.images.forEach(image => {
+            imagesSrc.push(this.getImageSrc(image))
+          });
+          imagesSrc.push(this.getImageSrc(project.image))
+        } else {
+          imagesSrc.push(this.getImageSrc(project.image))
+        }
+
+        return imagesSrc;
       }
     }
   }

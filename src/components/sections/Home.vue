@@ -241,7 +241,7 @@
 
   .button__link {
     position: relative;
-    padding: 12px 45px 12px 30px;
+    padding: 12px 30px;
     width: 290px;
     margin: 0 auto;
     border: 2px solid $color-white;
@@ -250,10 +250,6 @@
     text-align: left;
     transition: background-color .25s ease-in-out,
                 border .25s ease-in-out;
-
-    @media(min-width: $breakpoint-tablet) {
-      padding: 12px 30px;
-    }
 
     &:hover {
       background-color: $color-new-grass;

@@ -80,8 +80,8 @@
 <style lang="scss" scoped>
   .project {
     position: relative;
-    width: 400px;
-    height: 350px;
+    width: 350px;
+    height: 300px;
 
     &::before {
       content: '';
@@ -97,6 +97,11 @@
 
     &:hover::before {
       opacity: .95;
+    }
+
+    @media(min-width: $breakpoint-tablet) {
+      width: 400px;
+      height: 350px;
     }
   }
 

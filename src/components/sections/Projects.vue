@@ -276,10 +276,13 @@
 
   /* PROJECTS */
   .projects__projects-wrapper {
-    margin-top: 50px;
+    margin-top: 35px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    @media(min-width: $breakpoint-tablet) {
+      margin-top: 50px;
+    }
   }
 </style>

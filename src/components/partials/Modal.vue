@@ -91,19 +91,29 @@
   
   .modal__content {
     position: relative;
-    width: 650px;
+    width: 100%;
+    max-width: 375px;
     height: 650px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: $color-white;
+    
+    @media(min-width: $breakpoint-tablet) {
+      max-width: 100%;
+      width: 650px;
+      height: 650px;
+    }
   }
   
   .content__images-container {
-    height: 55%;
+    height: 50%;
     border-bottom: 5px solid $color-black;
     background-color: $color-clean;
     position: relative;
+    @media(min-width: $breakpoint-tablet) {
+      height: 55%;
+    }
   }
 
   .content__image {
@@ -115,8 +125,11 @@
 
   .content__text-container {
     position: relative;
-    height: 45%;
+    height: 50%;
     padding: 20px 25px;
+    @media(min-width: $breakpoint-tablet) {
+      height: 45%;
+    }
   }
   
   .content__headline {
@@ -161,6 +174,10 @@
     background-color: $color-new-grass;
     transition: background-color .25s ease-in-out,
                 color .25s ease-in-out;
+    
+    @media(min-width: $breakpoint-tablet) {
+      padding: 12px 30px 12px 25px;
+    }
 
     &:hover {
       background-color: transparent;

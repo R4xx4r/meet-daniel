@@ -1,7 +1,7 @@
 <template>
   <section class="block block--projects projects" id="projects">
     <div class="content-wrapper">
-      <h2 class="projects__headline headline headline--2">Projects</h2>
+      <h2 class="projects__headline headline headline--2">Projekte</h2>
 
       <div class="projects__filters filters">
         
@@ -211,7 +211,7 @@
 
   .icon--triangle {
     position: absolute;
-    bottom: -50px;
+    bottom: -60px;
   }
 
   /* FILTER STUFF */

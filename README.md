@@ -30,7 +30,6 @@ After installing our project you have some npm scripts available:
 | `npm run build` | Compiles and minifies for production |
 | `npm run lint` | Lints and fixes files |
 
-
 ## SVG handling
 I use a npm package called `vue-svgicon`. If you have svg's which you wanna use in one of your components take following steps:
 * create folder `assets/svg` (you can adapt all this in package.json scripts)
@@ -45,10 +44,14 @@ The script runs automatically once you started `npm run serve` or `npm run build
 <br>
 For more info please look at the npm page [here](https://www.npmjs.com/package/vue-svgicon).
 
+## Image handling
+If you wanna use "my" project to adapt it to your needs, first of all **THANK YOU SO MUCH**, I really appreciate it!<br>
+So back to topic :wink:. If you wanna use I think you have to adapt images too. Everytime I use images in json/data I used the path absolute from `assets/images` (this is the "base path"). So if your pic is in there just add the filename to the part, otherwise if you created a folder or something like that you have to adapt the methods where I build the src or just adapt the data for something like `folder/image.jpg`.
+
 ## Customize configuration
 If you wanna adapt the basic configuration to your needs take a look at [Vue CLI configuration reference](https://cli.vuejs.org/config/).
 
 
-## Bug
+## Bugs
 You found a bug, have a new idea, an improvement, ... please write an [issue](https://github.com/R4xx4r/meet-daniel/issues). <br>
 I really appreciate it - **YOU are awesome!** :sunglasses:

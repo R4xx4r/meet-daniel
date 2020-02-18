@@ -4,7 +4,20 @@
     <div class="modal__content content">
       
       <div class="content__images-container">
-        <img class="content__image" :src="images[0]" :alt="title" />
+
+        <div class="content__image-slider-container" v-if="needSwiper()">
+
+          <swiper :options="swiperOptions" class="" >
+            <swiperSlide v-for="(imageSrc, index) in images" :key="index">
+              <img class="content__image" :src="imageSrc" :alt="title" />
+            </swiperSlide>
+          </swiper>
+
+          <div class="swiper-button swiper-button-prev"></div>
+          <div class="swiper-button swiper-button-next"></div>
+        </div>
+
+        <img class="content__image" :src="images[0]" :alt="title" v-else />
       </div>
 
       <div class="content__text-container">
@@ -31,11 +44,17 @@
 </template>
 
 <script>
+  import { swiper, swiperSlide } from 'vue-awesome-swiper';
   import '../icons/close';
   import '../icons/link';
 
+
   export default {
     name: 'modal',
+    components: {
+      swiper,
+      swiperSlide
+    },
     props: {
       title: {
         type: String,
@@ -47,6 +66,22 @@
       images: {
         type: Array,
         required: true
+      }
+    },
+    data() {
+      return {
+        swiperOptions: {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          keyboard: {
+            enabled: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          }
+        }
       }
     },
     created() {
@@ -73,6 +108,9 @@
     methods: {
       closeModal() {
         this.$emit('closed');
+      },
+      needSwiper() {
+        return this.images.length > 1;
       }
     }
   }
@@ -107,10 +145,12 @@
   }
   
   .content__images-container {
+    position: relative;
     height: 50%;
     border-bottom: 5px solid $color-black;
-    background-color: $color-clean;
-    position: relative;
+    background-color: darken($color-clean, 25%);
+    overflow: hidden;
+    
     @media(min-width: $breakpoint-tablet) {
       height: 55%;
     }
@@ -119,8 +159,8 @@
   .content__image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top center;
+    object-fit: contain;
+    object-position: center;
   }
 
   .content__text-container {
@@ -209,5 +249,33 @@
 
   .content__link:hover .icon--link {
     fill: $color-new-grass;
+  }
+
+  /* swiper stuff*/
+  .content__image-slider-container,
+  .swiper-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-button {
+    top: auto;
+    bottom: 0;
+    background-color: rgba($color-black, .4);
+    padding: 40px 30px;
+    border-top: 2px solid $color-black;
+  }
+
+  .swiper-button-next {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNyA0NCI+PHBhdGggZD0iTTI3IDIyTDUgNDRsLTIuMS0yLjFMMjIuOCAyMiAyLjkgMi4xIDUgMGwyMiAyMnoiIGZpbGw9IiM4NkFDNDEiLz48L3N2Zz4=');
+    right: 0;
+    border-left: 2px solid $color-black;
+  }
+  
+  .swiper-button-prev {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNyA0NCc+PHBhdGggZD0nTTAsMjJMMjIsMGwyLjEsMi4xTDQuMiwyMmwxOS45LDE5LjlMMjIsNDRMMCwyMkwwLDIyTDAsMjJ6JyBmaWxsPScjODZBQzQxJy8+PC9zdmc+');    
+    left: 0;
+    border-right: 2px solid $color-black;
   }
 </style>

@@ -81,7 +81,13 @@
                 modal: {
                   intro: 'Kampagnen Seite',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> haben wir diese Nuxt.js Kampagnenseite umgesetzt. Die fertig gebuildete Seite wurde als Proxyframe in der Mutterseite eingebunden.',
-                  href: 'https://www.eucerin.at/vitamin-c/'
+                  href: 'https://www.eucerin.at/vitamin-c/',
+                  images: [
+                    'vitamin-c/vitamin-c_01.jpg',
+                    'vitamin-c/vitamin-c_02.jpg',
+                    'vitamin-c/vitamin-c_03.jpg',
+                    'vitamin-c/vitamin-c_04.jpg'
+                  ]
                 }
               },
               {
@@ -156,7 +162,13 @@
                 modal: {
                   intro: 'Website Relaunch',
                   description: 'Als Webdev der <a href="https://mmcagentur.at/" target="_blank">MMCAGENTUR</a> war ich hier als Backend Dev tätig. Dieses Projekt wurde agil umgesetzt und war in enger Zusammenarbeit aller beteiligter Teams eine großartige Erfahrung.',
-                  href: 'https://www.ottakringerbrauerei.at/'
+                  href: 'https://www.ottakringerbrauerei.at/',
+                  images: [
+                    'ottakringer/ottakringer_01.jpg',
+                    'ottakringer/ottakringer_02.jpg',
+                    'ottakringer/ottakringer_03.jpg',
+                    'ottakringer/ottakringer_04.jpg'
+                  ]
                 }
               },
               {

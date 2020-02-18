@@ -1,6 +1,8 @@
 .modal-open {
   overflow: hidden;
-  padding-right: 15px;
+  @media (min-width: $breakpoint-tablet) {
+    padding-right: 15px;
+  }
 }
 
 .block {

@@ -130,8 +130,12 @@
   .about__advantages {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 50px 0 75px;
+    justify-content: center;
+    margin: 50px 0;
+
+    @media(min-width: $breakpoint-tablet) {
+      margin-bottom: 75px;
+    }
   }
 
   .advantages__advantage {
@@ -140,16 +144,27 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    max-width: 275px;
+    max-width: 250px;
+    margin: 10px;
+    
+    @media(min-width: $breakpoint-tablet) {
+      max-width: 275px;
+    }
   }
+
   .advantage__image-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     background-color: $color-coral;
+
+    @media(min-width: $breakpoint-tablet) {
+      width: 110px;
+      height: 110px;
+    }
   }
 
   .advantage__headline,
@@ -162,11 +177,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+    @media(min-width: $breakpoint-tablet) {
+      flex-direction: row;
+    }
   }
 
   .personal__aboutme,
   .personal__skills {
-    width: 45%;
+    width: 100%;
+    padding: 15px;
+
+    @media (min-width: $breakpoint-tablet) {
+      width: 45%;
+      padding: 0;
+    }
   }
 
   .personal__aboutme {
@@ -185,9 +210,12 @@
   }
 
   .aboutme__image-wrapper {
-    max-width: 250px;
+    max-width: 200px;
     border-radius: 50%;
     overflow: hidden;
+    @media(min-width: $breakpoint-tablet) {
+      max-width: 250px;
+    }
   }
 
   .aboutme__image {
@@ -196,9 +224,12 @@
 
   .skills__skill {
     display: flex;
+    flex-direction: column;
     margin-bottom: 15px;
     background-color: $color-clean;
-    
+    @media(min-width: $breakpoint-tablet) {
+      flex-direction: row;
+    }
     &:last-child {
       margin-bottom: 0;
     }
@@ -209,16 +240,28 @@
     font-weight: $font-weight-bold;
     background-color: $color-coral;
     color: $color-white;
-    padding: 5px;
-    width: 150px;
+    padding: 3px;
+    width: 100%;
+
+    @media(min-width: $breakpoint-tablet) {
+      padding: 5px;
+      width: 150px;
+    }
   }
   
   .skill__percentage {
     position: relative;
-    text-align: right;
+    text-align: center;
     font-size: 12px;
-    padding: 5px;
     width: 100%;
+    color: $color-white;
+    z-index: 10;
+
+    @media(min-width: $breakpoint-tablet) {
+      padding: 5px;
+      text-align: right;
+      color: inherit;
+    }
   }
 
   .percentage__bar {
@@ -227,5 +270,6 @@
     left: 0;
     height: 100%;
     background-color: darken($color-coral, 18%);
+    z-index: -1;
   }
 </style>

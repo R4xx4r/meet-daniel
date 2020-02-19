@@ -61,7 +61,7 @@
           {
             icon: 'responsive',
             title: 'Responsive',
-            description: 'Meine Arbeit wird auf allen Geräten, egal ob groß oder klein, laufen.'
+            description: 'Egal ob groß oder klein - Es läuft immer fein.'
           },
           {
             icon: 'speed',

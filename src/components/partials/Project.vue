@@ -7,7 +7,7 @@
     </div>
 
     <div class="project__image-wrapper">
-      <img class="project__image" :src="getImageSrc(project.image)" :alt="project.title" />
+      <img class="project__image" :src="mixinGetImageSrc(project.image)" :alt="project.title" />
     </div>
 
     <div class="project__overlay project__overlay--bottom overlay">
@@ -49,9 +49,6 @@
       }
     },
     methods: {
-      getImageSrc(image) {
-        return require(`@/assets/images/projects/${image}`);
-      },
       showModal() {
         this.$store.state.modalVisible = true;
         this.visible = true;
@@ -64,11 +61,11 @@
         let imagesSrc = [];
         if (project.modal.images) {
           project.modal.images.forEach(image => {
-            imagesSrc.push(this.getImageSrc(image))
+            imagesSrc.push(this.mixinGetImageSrc(image))
           });
-          imagesSrc.push(this.getImageSrc(project.image))
+          imagesSrc.push(this.mixinGetImageSrc(project.image))
         } else {
-          imagesSrc.push(this.getImageSrc(project.image))
+          imagesSrc.push(this.mixinGetImageSrc(project.image))
         }
 
         return imagesSrc;

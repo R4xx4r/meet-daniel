@@ -6,15 +6,29 @@
       <div class="about__advantages advantages">
         
         <div class="advantages__advantage advantage" v-for="(advantage, index) in advantages" :key="index">
-          <div class="advantage__headline headline headline--3" v-text="advantage.title"></div>
+          <div class="advantage__image-wrapper">
+            <svgicon class="icon" :class="`icon--${mixinGetIconName(advantage.icon)}`" :name="mixinGetIconName(advantage.icon)"></svgicon>
+          </div>
+
+          <h3 class="advantage__headline headline headline--3" v-text="advantage.title"></h3>
           <div class="advantage__description" v-text="advantage.description"></div>
         </div>
 
       </div>
 
       <div class="about__personal personal">
+
         <div class="personal__aboutme aboutme">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          <div class="aboutme__image-wrapper">
+            <img class="aboutme__image" :src="mixinGetImageSrc('portrait.jpg')" alt="Portrait Daniel Murth" />
+          </div>
+
+          <h3 class="aboutme__headline headline headline--3">Wer ist dieser Typ eigentlich?</h3>
+          <div class="aboutme__description description">
+            Seit mehr als 10 Jahren bin ich Developer mit Herz und Seele aus Wien in Österreich.
+            Vor allem im Web versuche ich als "Fullstack" intuitive User Erlebnisse zu zaubern.<br />
+            <a class="description__link link" href="#contact" v-smooth-scroll>Lass uns gemeinsam etwas cooles erschaffen.</a>
+          </div>
         </div>
 
         <div class="personal__skills skills">
@@ -34,28 +48,33 @@
 </template>
 
 <script>
+  import '../icons/responsive';
+  import '../icons/speed';
+  import '../icons/rocket';
+  import '../icons/bulb';
+
   export default {
     name: 'md-about',
     data() {
       return {
         advantages: [
           {
-            icon: '',
+            icon: 'responsive',
             title: 'Responsive',
             description: 'Meine Arbeit wird auf allen Geräten, egal ob groß oder klein, laufen.'
           },
           {
-            icon: '',
+            icon: 'speed',
             title: 'Schnell',
             description: 'Verzögerungsfreie Interaktionen haben sehr hohe Priorität.'
           },
           {
-            icon: '',
+            icon: 'rocket',
             title: 'Lebendig',
             description: 'Webseiten müssen nicht langweilig sein, sie sollen lebendig wirken.'
           },
           {
-            icon: '',
+            icon: 'bulb',
             title: 'Intuitiv',
             description: 'Leicht und intuitiv zu bedienen, nicht nur für Digital Natives.'
           }
@@ -112,6 +131,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: 50px 0 75px;
   }
 
   .advantages__advantage {
@@ -122,22 +142,56 @@
     text-align: center;
     max-width: 275px;
   }
+  .advantage__image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: $color-coral;
+  }
 
-  .advantage__headline {
+  .advantage__headline,
+  .aboutme__headline {
     text-transform: none;
-    margin-bottom: 10px;
+    margin: 25px 0 10px 0;
   }
 
   .about__personal {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 50px;
   }
 
   .personal__aboutme,
   .personal__skills {
     width: 45%;
+  }
+
+  .personal__aboutme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .aboutme__description {
+    text-align: center;
+  }
+
+  .description__link {
+    color: $color-coral;
+  }
+
+  .aboutme__image-wrapper {
+    max-width: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .aboutme__image {
+    width: 100%;
   }
 
   .skills__skill {

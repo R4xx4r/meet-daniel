@@ -15,7 +15,7 @@
           <a class="item__link link" :href="menuItem.href" target="_blank" :title="menuItem.title">
             <!-- check if social media area or normal link area -->
             <template v-if="isSocialMediaNav()">
-              <svgicon class="icon" :class="getIconClassName(menuItem)" :name="getIconName(menuItem)"></svgicon>
+              <svgicon class="icon" :class="`icon--${mixinGetIconName(menuItem.title)}`" :name="mixinGetIconName(menuItem.title)"></svgicon>
             </template>
 
             <template v-else>
@@ -60,12 +60,6 @@
         if (this.menu.identifier) {
           return this.menu.identifier.toLowerCase() == 'social';
         }
-      },
-      getIconName(item) {
-        return item.title.toLowerCase();
-      },
-      getIconClassName(item) {
-        return 'icon--' + item.title.toLowerCase();
       },
       setActiveIndex(index) {
         this.selectedIndex = index;

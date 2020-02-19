@@ -218,12 +218,17 @@
   .block--projects {
     background-color: $color-clean;
     position: relative;
-    padding-bottom: 50px;
+    @media(min-width: $breakpoint-tablet) {
+      padding-bottom: 50px;
+    }
   }
 
   .icon--triangle {
     position: absolute;
-    bottom: -60px;
+    bottom: -35px;
+    @media(min-width: $breakpoint-tablet) {
+      bottom: -60px;
+    }
   }
 
   /* FILTER STUFF */

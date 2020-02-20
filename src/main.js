@@ -7,11 +7,13 @@ import { mixins } from './mixins/mixins';
 import vueSmoothScroll from 'vue2-smooth-scroll'; // https://www.npmjs.com/package/vue2-smooth-scroll
 import SvgIcon from 'vue-svgicon'; // https://www.npmjs.com/package/vue-svgicon
 import VueAwesomeSwiper from 'vue-awesome-swiper'; // https://github.com/surmon-china/vue-awesome-swiper
+import Vuelidate from 'vuelidate'; // https://github.com/vuelidate/vuelidate
 
 Vue.config.productionTip = false;
 
 Vue.use(vueSmoothScroll);
-Vue.use(VueAwesomeSwiper)
+Vue.use(VueAwesomeSwiper);
+Vue.use(Vuelidate);
 Vue.use(SvgIcon, {
   tagName: 'svgicon',
   classPrefix: 'svgicon-'

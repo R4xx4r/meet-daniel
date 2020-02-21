@@ -8,17 +8,30 @@
         Dann melde dich bei mir. Ich freue mich!
       </div>
 
-      <form class="contact__form form" @submit.prevent="submit()">
+      <form 
+        class="contact__form form" 
+        @submit.prevent="submit()"
+        name="contact" 
+        method="POST" 
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div class="form__form-group form__form-group--hidden">
+          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+        </div>
         
         <div class="form__form-group">
           <input 
             class="form__input form__input--text" 
             :class="{
-              'form__input--has-value': $v.name.$model,
-              'form__input--has-error': errors && $v.name.$error && !$v.name.required
+              'form__input--has-value': $v.form.name.$model,
+              'form__input--has-error': errors && $v.form.name.$error && !$v.form.name.required
             }" 
             type="text" 
-            v-model.trim="$v.name.$model">
+            v-model.trim="$v.form.name.$model">
           <label class="form__label">Name *</label>
         </div>
         
@@ -26,37 +39,37 @@
           <input 
             class="form__input form__input--text" 
             :class="{
-              'form__input--has-value': $v.email.$model,
-              'form__input--has-error': errors && $v.email.$error && (!$v.email.required || !$v.email.email)
+              'form__input--has-value': $v.form.email.$model,
+              'form__input--has-error': errors && $v.form.email.$error && (!$v.form.email.required || !$v.form.email.email)
             }" 
             type="text" 
-            v-model.trim.lazy="$v.email.$model">
+            v-model.trim.lazy="$v.form.email.$model">
           <label class="form__label">Email *</label>
         </div>
 
         <div class="form__form-group form__form-group--last">
           <textarea 
             class="form__input form__input--textarea" 
-            :class="{'form__input--has-value': $v.message.$model}" 
+            :class="{'form__input--has-value': $v.form.message.$model}" 
             rows="10"
             :maxlength="messageMaxChars"
-            v-model.trim="$v.message.$model"
+            v-model.trim="$v.form.message.$model"
           ></textarea>
           <label class="form__label form__label--textarea">Nachricht</label>
           
-          <div class="form__message-counter" :class="{'form__message-counter--warn': message.length > (messageMaxChars - 15)}">
-            {{ message.length }} / {{ messageMaxChars }}
+          <div class="form__message-counter" :class="{'form__message-counter--warn': form.message.length > (messageMaxChars - 15)}">
+            {{ form.message.length }} / {{ messageMaxChars }}
           </div>
         </div>
 
         <template v-if="errors">
-          <div class="form__input-error" v-if="$v.email.$error && !$v.email.required">
+          <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.required">
             Bitte gib deine Email Adresse ein.
           </div>
-          <div class="form__input-error" v-if="$v.email.$error && !$v.email.email">
+          <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.email">
             Bitte gib eine valide Email Adresse ein.
           </div>
-          <div class="form__input-error" v-if="$v.name.$error && !$v.name.required">
+          <div class="form__input-error" v-if="$v.form.name.$error && !$v.form.name.required">
             Bitte gib einen Namen ein.
           </div>
         </template>
@@ -88,30 +101,40 @@
     name: 'md-contact',
     data() {
       return {
-        name: '',
-        email: '',
-        message: '',
+        form: {
+          name: '',
+          email: '',
+          message: '',
+        },
         messageMaxChars: 500,
         submitStatus: null,
-        errors: false
+        errors: false,
+        fetchErrorMsg: ''
       }
     },
     validations: {
-      name: {
-        required
-      },
-      email: {
-        required,
-        email
-      },
-      message: {}
+      form: {
+        name: {
+          required
+        },
+        email: {
+          required,
+          email
+        },
+        message: {}
+      }
     },
     methods: {
       resetForm() {
-        this.name = '';
-        this.email = '';
-        this.message = '';
+        this.form.name = '';
+        this.form.email = '';
+        this.form.message = '';
         this.errors = false;
+      },
+      encode(data) {
+        return Object.keys(data)
+          .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+          .join('&');
       },
       submit() {
         this.$v.$touch();
@@ -119,14 +142,28 @@
 
         if (this.errors) {
           this.submitStatus = 'ERROR';
+
         } else {
-          // TODO: code me
           this.submitStatus = 'PENDING';
-          
-          setTimeout(() => {
+
+          fetch('/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: this.encode({
+              'form-name': 'contact',
+              ...this.form
+            })
+          })
+          .then(() => {
             this.submitStatus = 'OK';
             this.resetForm();
-          }, 500)
+          })
+          .catch(err => {
+            this.submitStatus = 'ERROR';
+            this.fetchErrorMsg = err; // only for debugging
+          });
         }
       }
     }
@@ -177,6 +214,9 @@
   }
   .form__form-group--last {
     margin-bottom: 0;
+  }
+  .form__form-group--hidden {
+    display: none;
   }
 
   .form__input {

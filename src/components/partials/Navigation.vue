@@ -12,7 +12,7 @@
 
         <template v-if="isAnchorLink(menuItem.href)"> <!-- internal link -->
           
-          <a class="item__link link" @click="setActiveIndex(index)" :href="menuItem.href" v-smooth-scroll>{{ menuItem.title }}</a>
+          <a class="item__link link" @click="setActiveIndex(index)" :href="menuItem.href" v-smooth-scroll="{offset: -60}">{{ menuItem.title }}</a>
 
         </template>
 

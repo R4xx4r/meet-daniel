@@ -174,7 +174,7 @@
   .block--contact {
     color: $color-clean;
     background-color: $color-stormy;
-    padding-top: 125px;
+    padding-top: 100px;
     @media (min-width: $breakpoint-tablet) {
       padding: 150px 0 125px;
     }
@@ -195,6 +195,10 @@
     color: $color-coral;
     text-align: center;
     margin-top: 35px;
+    padding: 0 20px;
+    @media(min-width: $breakpoint-tablet) {
+      padding: 0;
+    }
   }
 
   .contact__form {
@@ -304,7 +308,7 @@
 
   .form__button {
     display: block;
-    margin: 0 auto;
+    margin: 15px auto 0;
     padding: 12px 30px;
     border: 2px solid $color-clean;
     background-color: transparent;

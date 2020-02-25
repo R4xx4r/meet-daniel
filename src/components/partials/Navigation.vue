@@ -208,12 +208,15 @@
   }
 
   .nav--social .menu__item {
-    margin: 0 25px;
+    margin: 0 20px;
+
     &:first-child {
-      margin-top: 0; 
+      margin-top: 0;
+      margin-left: 0;
     }
     &:last-child {
-      margin-bottom: 0; 
+      margin-bottom: 0;
+      margin-right: 0; 
     }
   }
 

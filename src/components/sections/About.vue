@@ -131,7 +131,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 50px 0;
+    margin: 50px 0 25px;
 
     @media(min-width: $breakpoint-tablet) {
       margin-bottom: 75px;
@@ -141,13 +141,14 @@
   .advantages__advantage {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
-    max-width: 250px;
+    max-width: 160px;
     margin: 10px;
     
     @media(min-width: $breakpoint-tablet) {
+      justify-content: center;
       max-width: 275px;
     }
   }
@@ -199,6 +200,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
+    @media (min-width: $breakpoint-tablet) {
+      margin-bottom: 0;
+    }
   }
 
   .aboutme__description {

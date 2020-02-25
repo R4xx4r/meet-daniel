@@ -100,9 +100,9 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin: 0 0 0 auto;
+    margin: 0 10px 0 auto;
     padding: 15px;
-    width: 120px;
+    width: 110px;
     height: 100%;
     cursor: pointer;
 
@@ -115,7 +115,7 @@
   }
   
   .toggle__text {
-    margin-right: 20px;
+    margin: 0 auto 0 0;
     font-size: 13px;
   }
 
@@ -125,7 +125,8 @@
     height: 3px;
     width: 25px;
     background-color: $color-clean;
-    transition: background-color .25s ease-in-out;
+    transition: background-color .25s ease-in-out,
+                width .25s ease-in-out;
 
     &::before,
     &::after {
@@ -147,6 +148,10 @@
     &::after {
       top: 10px;
     }
+  }
+
+  .nav--main .nav__toggle:hover .toggle__bar {
+    width: 30px;
   }
 
   .nav__toggle--open .toggle__bar {

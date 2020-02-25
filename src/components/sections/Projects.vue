@@ -199,17 +199,28 @@
     methods: {
       setActiveIndex(index) {
         this.selectedIndex = index;
+      },
+      shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
       }
     },
     mounted() {
+      let tmpArr = []
+
       this.categoriesWithProjects.forEach(category => {
         
         category.projects.forEach(project => {
           project['categoryName'] = category.categoryName;
-          this.categoriesWithProjects[0]['projects'].push(project);
+          tmpArr.push(project);
         });
         
       });
+      tmpArr = this.shuffleArray(tmpArr);
+      this.categoriesWithProjects[0]['projects'] = tmpArr;
     }
   }
 </script>

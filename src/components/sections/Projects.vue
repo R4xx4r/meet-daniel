@@ -206,21 +206,24 @@
           [arr[i], arr[j]] = [arr[j], arr[i]];
         }
         return arr;
+      },
+      createProductsArray() {
+        let tmpArr = []
+
+        this.categoriesWithProjects.forEach(category => {
+          
+          category.projects.forEach(project => {
+            project['categoryName'] = category.categoryName;
+            tmpArr.push(project);
+          });
+          
+        });
+        tmpArr = this.shuffleArray(tmpArr);
+        this.categoriesWithProjects[0]['projects'] = tmpArr;
       }
     },
     mounted() {
-      let tmpArr = []
-
-      this.categoriesWithProjects.forEach(category => {
-        
-        category.projects.forEach(project => {
-          project['categoryName'] = category.categoryName;
-          tmpArr.push(project);
-        });
-        
-      });
-      tmpArr = this.shuffleArray(tmpArr);
-      this.categoriesWithProjects[0]['projects'] = tmpArr;
+      this.createProductsArray();
     }
   }
 </script>

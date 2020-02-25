@@ -20,7 +20,7 @@
 
     </div>
 
-    <Navigation class="home__navigation" :menu="menu" />
+    <Navigation class="home__navigation" :class="{'home__navigation--sticky': navSticky}" :menu="menu" />
 
   </section>
 </template>
@@ -37,6 +37,8 @@
     },
     data() {
       return {
+        navPosition: 0,
+        navSticky: false,
         menu: {
           identifier: 'main',
           items:[
@@ -70,9 +72,6 @@
           }
         ]}
       }
-    },
-    mounted() {
-      this.initParticles();
     },
     methods: {
       initParticles() {
@@ -186,7 +185,26 @@
           },
           "retina_detect": true
         });
+      },
+      onScroll() {
+        // Get the current scroll position
+        let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        if(currentScrollPosition == this.navPosition || currentScrollPosition > this.navPosition) {
+          this.navSticky = true;
+        } else {
+          this.navSticky = false;
+        }
       }
+    },
+    created() {
+      window.addEventListener('scroll', this.onScroll)
+    },
+    mounted() {
+      this.initParticles();
+      this.navPosition = document.querySelector('.home__navigation').offsetTop;
+    },
+    beforeDestroy () {
+      window.removeEventListener('scroll', this.onScroll)
     }
   }
 </script>
@@ -266,5 +284,11 @@
   }
   .button__link:hover .icon--arrow {
     transform: translateY(-50%) rotate(90deg);
+  }
+
+  .home__navigation--sticky {
+    position: fixed;
+    top: 0;
+    z-index: 20;
   }
 </style>

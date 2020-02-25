@@ -77,7 +77,7 @@
 <style lang="scss" scoped>
   .project {
     position: relative;
-    width: 175px;
+    width: 185px;
     height: 185px;
     @media(min-width: $breakpoint-tablet) {
       width: 400px;
@@ -151,8 +151,10 @@
     color: $color-black;
     font-weight: $font-weight-bold;
     text-align: center;
+    padding: 0 10px;
     @media(min-width: $breakpoint-tablet) {
       font-size: 20px;
+      padding: 0;
     }
   }
   .overlay__subtitle {

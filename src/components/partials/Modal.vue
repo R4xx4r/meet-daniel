@@ -263,7 +263,7 @@
     top: auto;
     bottom: 0;
     background-color: rgba($color-black, .4);
-    padding: 40px 30px;
+    padding: 30px;
     border-top: 2px solid $color-black;
   }
 

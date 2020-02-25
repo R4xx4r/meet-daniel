@@ -77,8 +77,12 @@
 <style lang="scss" scoped>
   .project {
     position: relative;
-    width: 350px;
-    height: 300px;
+    width: 175px;
+    height: 185px;
+    @media(min-width: $breakpoint-tablet) {
+      width: 400px;
+      height: 350px;
+    }
 
     &::before {
       content: '';
@@ -94,11 +98,6 @@
 
     &:hover::before {
       opacity: .95;
-    }
-
-    @media(min-width: $breakpoint-tablet) {
-      width: 400px;
-      height: 350px;
     }
   }
 
@@ -133,33 +132,54 @@
   }
   
   .project:hover .project__overlay--top {
-    top: 75px;
+    top: 15px;
     opacity: 1;
+    @media(min-width: $breakpoint-tablet) {
+      top: 75px;
+    }
   }
   .project:hover .project__overlay--bottom {
-    bottom: 50px;
+    bottom: 15px;
     opacity: 1;
+    @media(min-width: $breakpoint-tablet) {
+      bottom: 50px;
+    }
   }
 
   .overlay__title {
-    font-size: 20px;
+    font-size: 18px;
     color: $color-black;
     font-weight: $font-weight-bold;
+    text-align: center;
+    @media(min-width: $breakpoint-tablet) {
+      font-size: 20px;
+    }
   }
   .overlay__subtitle {
-    font-size: 18px;
-    margin-top: 15px;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 0 10px;
     color: $color-new-grass;
+    text-align: center;
+    @media(min-width: $breakpoint-tablet) {
+      font-size: 18px;
+      margin-top: 15px;
+      padding: 0;
+    }
   }
 
   .overlay__button {
     cursor: pointer;
-    padding: 15px 30px;
+    padding: 10px 20px;
     color: $color-dark-gray;
     background-color: transparent;
     border: 2px solid $color-new-grass;
     transition: background-color .25s ease-in-out,
                 color .25s ease-in-out;
+
+    @media(min-width: $breakpoint-tablet) {
+      padding: 15px 30px;
+    }
 
     &:hover {
       color: $color-white;

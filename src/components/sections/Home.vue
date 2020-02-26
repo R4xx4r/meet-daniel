@@ -11,7 +11,7 @@
           und bin Web Developer.
         </div>
         <div class="content__button button">
-          <a class="button__link link" href="#projects" v-smooth-scroll="{duration: 1200}">
+          <a class="button__link link" href="#projects" v-smooth-scroll="{duration: 1200, offset: -60}">
             Zu meinen Projekten
             <svgicon class="icon icon--arrow" name="arrow"></svgicon>
           </a>

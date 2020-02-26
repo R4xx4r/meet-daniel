@@ -27,7 +27,7 @@
           <div class="aboutme__description description">
             Seit mehr als 10 Jahren bin ich Developer mit Herz und Seele aus Wien in Österreich.
             Vor allem im Web versuche ich als "Fullstack" intuitive User Erlebnisse zu zaubern.<br />
-            <a class="description__link link" href="#contact" v-smooth-scroll>Lass uns gemeinsam etwas cooles erschaffen.</a>
+            <a class="description__link link" href="#contact" v-smooth-scroll="{offset: -60}">Lass uns gemeinsam etwas cooles erschaffen.</a>
           </div>
         </div>
 

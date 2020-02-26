@@ -150,10 +150,6 @@
     }
   }
 
-  .nav--main .nav__toggle:hover .toggle__bar {
-    width: 30px;
-  }
-
   .nav__toggle--open .toggle__bar {
     background-color: transparent;
 

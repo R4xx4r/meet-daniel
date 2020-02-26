@@ -32,10 +32,13 @@
       <div class="projects__projects-wrapper">
         
         <Project 
-          v-for="(project, index) in categoriesWithProjects[selectedIndex]['projects']" 
+          v-for="(project, index) in getSelectedProjects()" 
           :key="index" 
-          :project="project" />
+          :project="project"
+          v-show="index < visibleProjects.length" />
       </div>
+
+      <button class="projects__button projects__button--more" @click="loadMoreProjects" v-if="showButton">Mehr anzeigen</button>
     </div>
     
     <svgicon preserveAspectRatio="none" class="icon icon--triangle" name="triangle"></svgicon>
@@ -55,6 +58,8 @@
     data() {
       return {
         selectedIndex: 0,
+        projectsPerPage: 6,
+        page: 1,
         categoriesWithProjects: [
           {
             categoryName: 'Alle',
@@ -220,6 +225,29 @@
         });
         tmpArr = this.shuffleArray(tmpArr);
         this.categoriesWithProjects[0]['projects'] = tmpArr;
+      },
+      getSelectedProjects() {
+        return this.categoriesWithProjects[this.selectedIndex]['projects'];
+      },
+      loadMoreProjects() {
+        this.page++;
+      }
+    },
+    computed: {
+      visibleProjects() {
+        return this.categoriesWithProjects[this.selectedIndex]['projects'].slice(0, this.page * this.projectsPerPage);
+      },
+      maxPages() {
+        return this.categoriesWithProjects[this.selectedIndex]['projects'].length / this.projectsPerPage;
+      },
+      showButton() {
+        return this.page < this.maxPages;
+      }
+    },
+    created() {
+      let screenWidth = window.innerWidth;
+      if (screenWidth == 768 || screenWidth < 768) {
+        this.projectsPerPage = 4;
       }
     },
     mounted() {
@@ -324,6 +352,24 @@
     align-items: center;
     @media(min-width: $breakpoint-tablet) {
       margin-top: 50px;
+    }
+  }
+
+  .projects__button--more {
+    display: block;
+    padding: 12px 30px;
+    margin: 35px auto 0;
+    font-size: inherit;
+    color: $color-white;
+    background-color: $color-new-grass;
+    border: 2px solid $color-new-grass;
+    cursor: pointer;
+    transition: color .25s ease-in-out,
+                background-color .25s ease-in-out;
+  
+    &:hover {
+      color: $color-new-grass;
+      background-color: transparent;
     }
   }
 </style>

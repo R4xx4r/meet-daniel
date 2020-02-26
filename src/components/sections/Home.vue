@@ -186,18 +186,22 @@
           "retina_detect": true
         });
       },
-      onScroll() {
-        // Get the current scroll position
-        let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      checkStickyNav(currentScrollPosition) {
         if(currentScrollPosition == this.navPosition || currentScrollPosition > this.navPosition) {
           this.navSticky = true;
         } else {
           this.navSticky = false;
         }
+      },
+      onScroll() {
+        // Get the current scroll position
+        let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        
+        this.checkStickyNav(currentScrollPosition);
       }
     },
     created() {
-      window.addEventListener('scroll', this.onScroll)
+      window.addEventListener('scroll', this.onScroll);
     },
     mounted() {
       this.initParticles();

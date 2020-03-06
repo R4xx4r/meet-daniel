@@ -1,20 +1,25 @@
 <template>
   <section class="block block--about about" id="about">
     <div class="content-wrapper">
-      <h2 class="about__headline headline headline--2">Über mich</h2>
+      
+      <Observer>
+        <h2 class="about__headline headline headline--2">Über mich</h2>
+      </Observer>
 
-      <div class="about__advantages advantages">
-        
-        <div class="advantages__advantage advantage" v-for="(advantage, index) in advantages" :key="index">
-          <div class="advantage__image-wrapper">
-            <svgicon class="icon" :class="`icon--${mixinGetIconName(advantage.icon)}`" :name="mixinGetIconName(advantage.icon)"></svgicon>
+      <Observer>
+        <div class="about__advantages advantages">
+            
+          <div class="advantages__advantage advantage" v-for="(advantage, index) in advantages" :key="index">
+            <div class="advantage__image-wrapper">
+              <svgicon class="icon" :class="`icon--${mixinGetIconName(advantage.icon)}`" :name="mixinGetIconName(advantage.icon)"></svgicon>
+            </div>
+
+            <h3 class="advantage__headline headline headline--3" v-text="advantage.title"></h3>
+            <div class="advantage__description" v-text="advantage.description"></div>
           </div>
 
-          <h3 class="advantage__headline headline headline--3" v-text="advantage.title"></h3>
-          <div class="advantage__description" v-text="advantage.description"></div>
         </div>
-
-      </div>
+      </Observer>
 
       <div class="about__personal personal">
 
@@ -31,23 +36,29 @@
           </div>
         </div>
 
-        <div class="personal__skills skills">
-          
-          <div class="skills__skill skill" v-for="(skill, index) in skills" :key="index">
-            <div class="skill__name" v-text="skill.title"></div>
-            <div class="skill__percentage percentage">
-              <span class="percentage__bar" :style="{'width': `${skill.percentage}%`}"></span>
-              {{ skill.percentage }} %
-              </div>
-          </div>
 
-        </div>
+        <Observer :intersectionRatio="0.5" :style="getObserverBlockWidth()">
+          <div class="skills__skills">
+    
+            <div class="skills__skill skill" v-for="(skill, index) in skills" :key="index">
+              <div class="skill__name" v-text="skill.title"></div>
+              <div class="skill__percentage percentage">
+                <span class="percentage__bar" :style="{'width': `${skill.percentage}%`}"></span>
+                {{ skill.percentage }} %
+                </div>
+            </div>
+
+          </div>
+        </Observer>
+        
+
       </div>
     </div>
   </section>
 </template>
 
 <script>
+  import Observer from '../partials/Observer';
   import '../icons/responsive';
   import '../icons/speed';
   import '../icons/rocket';
@@ -55,6 +66,9 @@
 
   export default {
     name: 'md-about',
+    components: {
+      Observer
+    },
     data() {
       return {
         advantages: [
@@ -122,11 +136,27 @@
           }
         ]
       }
+    },
+    methods: {
+      getObserverBlockWidth() {
+        if (window.innerWidth < 768) {
+          return 'width: 100%;';
+        }
+        return 'width: 45%;';
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  .about__headline {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+  .animate .about__headline {
+    opacity: 1;
+  }
+
   .about__advantages {
     display: flex;
     flex-wrap: wrap;
@@ -146,10 +176,19 @@
     text-align: center;
     max-width: 160px;
     margin: 10px;
+    opacity: 0;
     
     @media(min-width: $breakpoint-tablet) {
       justify-content: center;
       max-width: 275px;
+    }
+  }
+
+  .animate .advantages__advantage {
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        animation: scale-out-in 1s #{$i * .1}s ease-in forwards;
+      }
     }
   }
 
@@ -181,11 +220,11 @@
     flex-direction: column;
     @media(min-width: $breakpoint-tablet) {
       flex-direction: row;
+      padding: 0 25px;
     }
   }
 
-  .personal__aboutme,
-  .personal__skills {
+  .personal__aboutme {
     width: 100%;
     padding: 15px;
 
@@ -227,11 +266,20 @@
     width: 100%;
   }
 
+  .skills__skills {
+    width: 100%;
+    padding: 0 15px;
+    @media(min-width: $breakpoint-tablet) {
+      padding: 0 25px;
+    }
+  }
+
   .skills__skill {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
     background-color: $color-clean;
+    overflow: hidden;
     @media(min-width: $breakpoint-tablet) {
       flex-direction: row;
     }
@@ -247,6 +295,7 @@
     color: $color-white;
     padding: 3px;
     width: 100%;
+    z-index: 15;
 
     @media(min-width: $breakpoint-tablet) {
       padding: 5px;
@@ -272,9 +321,19 @@
   .percentage__bar {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -100%;
     height: 100%;
     background-color: darken($color-coral, 18%);
     z-index: -1;
+  }
+
+  .animate .skills__skill {
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        .percentage__bar {
+          animation: skill-fade-in 1.5s #{$i * .5}s ease-in forwards;
+        }
+      }
+    }
   }
 </style>

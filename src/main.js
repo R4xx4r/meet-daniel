@@ -1,3 +1,5 @@
+require('intersection-observer'); // https://www.npmjs.com/package/intersection-observer
+
 import Vue from 'vue';
 import App from './App.vue';
 

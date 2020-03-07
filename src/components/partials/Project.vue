@@ -101,9 +101,8 @@
       opacity: .95;
     }
   }
-   .animate .project {
-  
-    @for $i from 1 through 6 {
+  .animate .project {
+    @for $i from 1 through 20 {
       &:nth-child(#{$i}) {
         animation: bottom-to-top .75s #{$i * .25}s ease-in forwards;
       }

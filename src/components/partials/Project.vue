@@ -79,6 +79,7 @@
     position: relative;
     width: 185px;
     height: 185px;
+    opacity: 0;
     @media(min-width: $breakpoint-tablet) {
       width: 400px;
       height: 350px;
@@ -98,6 +99,14 @@
 
     &:hover::before {
       opacity: .95;
+    }
+  }
+   .animate .project {
+  
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        animation: bottom-to-top .75s #{$i * .25}s ease-in forwards;
+      }
     }
   }
 

@@ -3,81 +3,87 @@
     <SectionObserver>
 
       <div class="contact__content-wrapper content-wrapper">
-        <h2 class="contact__headline headline headline--2">Kontakt</h2>
+        <AnimationObserver>
+          <h2 class="contact__headline headline headline--2">Kontakt</h2>
+        </AnimationObserver>
 
-        <div class="contact__intro">
-          Du hast eine Frage, oder möchtest gemeinsam etwas neues schaffen?<br />
-          Dann melde dich bei mir. Ich freue mich!
-        </div>
-
-        <form 
-          class="contact__form form" 
-          @submit.prevent="submit()"
-          name="contact" 
-          method="POST" 
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-        >
-
-          <input type="hidden" name="form-name" value="contact" />
-
-          <div class="form__form-group form__form-group--hidden">
-            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+        <AnimationObserver>
+          <div class="contact__intro">
+            Du hast eine Frage, oder möchtest gemeinsam etwas neues schaffen?<br />
+            Dann melde dich bei mir. Ich freue mich!
           </div>
-          
-          <div class="form__form-group">
-            <input 
-              class="form__input form__input--text" 
-              :class="{
-                'form__input--has-value': $v.form.name.$model,
-                'form__input--has-error': errors && $v.form.name.$error && !$v.form.name.required
-              }" 
-              type="text" 
-              v-model.trim="$v.form.name.$model">
-            <label class="form__label">Name *</label>
-          </div>
-          
-          <div class="form__form-group">
-            <input 
-              class="form__input form__input--text" 
-              :class="{
-                'form__input--has-value': $v.form.email.$model,
-                'form__input--has-error': errors && $v.form.email.$error && (!$v.form.email.required || !$v.form.email.email)
-              }" 
-              type="text" 
-              v-model.trim.lazy="$v.form.email.$model">
-            <label class="form__label">Email *</label>
-          </div>
+        </AnimationObserver>
 
-          <div class="form__form-group form__form-group--last">
-            <textarea 
-              class="form__input form__input--textarea" 
-              :class="{'form__input--has-value': $v.form.message.$model}" 
-              rows="10"
-              :maxlength="messageMaxChars"
-              v-model.trim="$v.form.message.$model"
-            ></textarea>
-            <label class="form__label form__label--textarea">Nachricht</label>
+        <AnimationObserver>
+          <form 
+            class="contact__form form" 
+            @submit.prevent="submit()"
+            name="contact" 
+            method="POST" 
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+
+            <input type="hidden" name="form-name" value="contact" />
+
+            <div class="form__form-group form__form-group--hidden">
+              <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+            </div>
             
-            <div class="form__message-counter" :class="{'form__message-counter--warn': form.message.length > (messageMaxChars - 15)}">
-              {{ form.message.length }} / {{ messageMaxChars }}
+            <div class="form__form-group">
+              <input 
+                class="form__input form__input--text" 
+                :class="{
+                  'form__input--has-value': $v.form.name.$model,
+                  'form__input--has-error': errors && $v.form.name.$error && !$v.form.name.required
+                }" 
+                type="text" 
+                v-model.trim="$v.form.name.$model">
+              <label class="form__label">Name *</label>
             </div>
-          </div>
+            
+            <div class="form__form-group">
+              <input 
+                class="form__input form__input--text" 
+                :class="{
+                  'form__input--has-value': $v.form.email.$model,
+                  'form__input--has-error': errors && $v.form.email.$error && (!$v.form.email.required || !$v.form.email.email)
+                }" 
+                type="text" 
+                v-model.trim.lazy="$v.form.email.$model">
+              <label class="form__label">Email *</label>
+            </div>
 
-          <template v-if="errors">
-            <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.required">
-              Bitte gib deine Email Adresse ein.
+            <div class="form__form-group form__form-group--last">
+              <textarea 
+                class="form__input form__input--textarea" 
+                :class="{'form__input--has-value': $v.form.message.$model}" 
+                rows="10"
+                :maxlength="messageMaxChars"
+                v-model.trim="$v.form.message.$model"
+              ></textarea>
+              <label class="form__label form__label--textarea">Nachricht</label>
+              
+              <div class="form__message-counter" :class="{'form__message-counter--warn': form.message.length > (messageMaxChars - 15)}">
+                {{ form.message.length }} / {{ messageMaxChars }}
+              </div>
             </div>
-            <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.email">
-              Bitte gib eine valide Email Adresse ein.
-            </div>
-            <div class="form__input-error" v-if="$v.form.name.$error && !$v.form.name.required">
-              Bitte gib einen Namen ein.
-            </div>
-          </template>
 
-          <button class="form__button" type="submit" :disabled="submitStatus === 'PENDING'">Absenden</button>
-        </form>
+            <template v-if="errors">
+              <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.required">
+                Bitte gib deine Email Adresse ein.
+              </div>
+              <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.email">
+                Bitte gib eine valide Email Adresse ein.
+              </div>
+              <div class="form__input-error" v-if="$v.form.name.$error && !$v.form.name.required">
+                Bitte gib einen Namen ein.
+              </div>
+            </template>
+
+            <button class="form__button" type="submit" :disabled="submitStatus === 'PENDING'">Absenden</button>
+          </form>
+        </AnimationObserver>
 
         <div class="contact__form-status contact__form-status--error" v-if="submitStatus === 'ERROR'">
           Leider gab es einen Fehler. Bitte fülle, das Formular richtig aus und versuche es erneut. <br />
@@ -99,13 +105,15 @@
 
 <script>
   import SectionObserver from '../observer/SectionObserver';
+  import AnimationObserver from '../observer/AnimationObserver';
 
   import { required, email } from 'vuelidate/lib/validators'
 
   export default {
     name: 'md-contact',
     components: {
-      SectionObserver
+      SectionObserver,
+      AnimationObserver
     },
     data() {
       return {
@@ -194,9 +202,17 @@
 
   .contact__headline {
     color: inherit;
+    opacity: 0;
     &::after {
       background-color: $color-clean;
+      opacity: 0;
     }
+  }
+  .animate .contact__headline {
+    animation: right-to-left 1s ease-in-out forwards;
+  }
+  .animate .contact__headline::after {
+    animation: right-to-left 1s .5s ease-in-out forwards;
   }
 
   .contact__intro {
@@ -204,19 +220,27 @@
     text-align: center;
     margin-top: 35px;
     padding: 0 20px;
+    opacity: 0;
     @media(min-width: $breakpoint-tablet) {
       padding: 0;
     }
+  }
+  .animate .contact__intro {
+    animation: left-to-right 1.15s ease-in-out forwards;
   }
 
   .contact__form {
     width: 375px;
     padding: 0 15px;
     margin: 25px auto 0;
+    opacity: 0;
     @media(min-width: $breakpoint-tablet) {
       width: 500px;
       padding: 0;
     }
+  }
+  .animate .contact__form {
+    animation: scale-out-in-small .75s ease-in forwards;
   }
 
   .form__form-group {

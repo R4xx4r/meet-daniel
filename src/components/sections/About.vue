@@ -25,19 +25,20 @@
 
         <div class="about__personal personal">
 
-          <div class="personal__aboutme aboutme">
-            <div class="aboutme__image-wrapper">
-              <img class="aboutme__image" :src="mixinGetImageSrc('portrait.jpg')" alt="Portrait Daniel Murth" />
-            </div>
+          <AnimationObserver :intersectionRatio="0.5" :style="getObserverBlockWidth()">
+            <div class="personal__aboutme aboutme">
+              <div class="aboutme__image-wrapper">
+                <img class="aboutme__image" :src="mixinGetImageSrc('portrait.jpg')" alt="Portrait Daniel Murth" />
+              </div>
 
-            <h3 class="aboutme__headline headline headline--3">Wer ist dieser Typ eigentlich?</h3>
-            <div class="aboutme__description description">
-              Seit mehr als 10 Jahren bin ich Developer mit Herz und Seele aus Wien in Österreich.
-              Vor allem im Web versuche ich als "Fullstack" intuitive User Erlebnisse zu zaubern.<br />
-              <a class="description__link link" href="#contact" v-smooth-scroll="{offset: -60}">Lass uns gemeinsam etwas cooles erschaffen.</a>
+              <h3 class="aboutme__headline headline headline--3">Wer ist dieser Typ eigentlich?</h3>
+              <div class="aboutme__description description">
+                Seit mehr als 10 Jahren bin ich Developer mit Herz und Seele aus Wien in Österreich.
+                Vor allem im Web versuche ich als "Fullstack" intuitive User Erlebnisse zu zaubern.<br />
+                <a class="description__link link" href="#contact" v-smooth-scroll="{offset: -60}">Lass uns gemeinsam etwas cooles erschaffen.</a>
+              </div>
             </div>
-          </div>
-
+          </AnimationObserver>
 
           <AnimationObserver :intersectionRatio="0.5" :style="getObserverBlockWidth()">
             <div class="skills__skills">
@@ -156,12 +157,15 @@
 </script>
 
 <style lang="scss" scoped>
-  .about__headline {
+  .about__headline,
+  .about__headline::after {
     opacity: 0;
-    transition: opacity 2s ease-in-out;
   }
   .animate .about__headline {
-    opacity: 1;
+    animation: right-to-left 1s ease-in-out forwards;
+  }
+  .animate .about__headline::after {
+    animation: right-to-left 1s .5s ease-in-out forwards;
   }
 
   .about__advantages {
@@ -194,7 +198,7 @@
   .animate .advantages__advantage {
     @for $i from 1 through 4 {
       &:nth-child(#{$i}) {
-        animation: scale-out-in 1s #{$i * .1}s ease-in forwards;
+        animation: scale-out-in 1s #{$i * .25}s ease-in forwards;
       }
     }
   }
@@ -214,8 +218,7 @@
     }
   }
 
-  .advantage__headline,
-  .aboutme__headline {
+  .advantage__headline {
     text-transform: none;
     margin: 25px 0 10px 0;
   }
@@ -236,7 +239,6 @@
     padding: 15px;
 
     @media (min-width: $breakpoint-tablet) {
-      width: 45%;
       padding: 0;
     }
   }
@@ -252,8 +254,22 @@
     }
   }
 
+  .aboutme__headline {
+    text-transform: none;
+    margin: 25px 0 10px 0;
+    opacity: 0;
+  }
+  .animate .aboutme__headline {
+    animation: left-to-right 1s .5s ease-in forwards;
+  }
+
   .aboutme__description {
     text-align: center;
+    opacity: 0;
+  }
+
+  .animate .aboutme__description {
+    animation: left-to-right 1s .75s ease-in forwards;
   }
 
   .description__link {
@@ -264,9 +280,13 @@
     max-width: 200px;
     border-radius: 50%;
     overflow: hidden;
+    opacity: 0;
     @media(min-width: $breakpoint-tablet) {
       max-width: 250px;
     }
+  }
+  .animate .aboutme__image-wrapper {
+    animation: left-to-right 1s ease-in forwards;
   }
 
   .aboutme__image {
@@ -338,7 +358,7 @@
     @for $i from 1 through 10 {
       &:nth-child(#{$i}) {
         .percentage__bar {
-          animation: skill-fade-in 1.5s #{$i * .5}s ease-in forwards;
+          animation: skill-fade-in 1.5s #{$i * .15}s ease-in forwards;
         }
       }
     }

@@ -3,44 +3,51 @@
     <SectionObserver>
 
       <div class="content-wrapper">
-        <h2 class="projects__headline headline headline--2">Projekte</h2>
 
-        <div class="projects__filters filters">
-          
-          <div class="filters__dropdown-wrapper" v-cloak>
+        <AnimationObserver>
+          <h2 class="projects__headline headline headline--2">Projekte</h2>
+        </AnimationObserver>
+
+        <AnimationObserver>
+          <div class="projects__filters filters">
             
-            <select class="filters__dropdown" @change="setActiveIndex($event.target.value)" title="Wähle eine Kategorie">
-              <option
-                v-for="(category, index) in categoriesWithProjects" 
-                :key="index" 
-                :value="index"
-                v-text="category.categoryName"
-              ></option>
-            </select>
+            <div class="filters__dropdown-wrapper" v-cloak>
+              
+              <select class="filters__dropdown" @change="setActiveIndex($event.target.value)" title="Wähle eine Kategorie">
+                <option
+                  v-for="(category, index) in categoriesWithProjects" 
+                  :key="index" 
+                  :value="index"
+                  v-text="category.categoryName"
+                ></option>
+              </select>
+
+            </div>
+
+            <div 
+              class="filters__filter filter" 
+              :class="{'filter--active': selectedIndex == index}" 
+              v-for="(category, index) in categoriesWithProjects" 
+              :key="index" 
+              @click="setActiveIndex(index)"
+              v-text="category.categoryName"
+            ></div>
 
           </div>
+        </AnimationObserver>
 
-          <div 
-            class="filters__filter filter" 
-            :class="{'filter--active': selectedIndex == index}" 
-            v-for="(category, index) in categoriesWithProjects" 
-            :key="index" 
-            @click="setActiveIndex(index)"
-            v-text="category.categoryName"
-          ></div>
+        <AnimationObserver :intersectionRatio="0.5">
+          <div class="projects__projects-wrapper">
+            
+            <Project 
+              v-for="(project, index) in getSelectedProjects()" 
+              :key="index" 
+              :project="project"
+              v-show="index < visibleProjects.length" />
+          </div>
 
-        </div>
-
-        <div class="projects__projects-wrapper">
-          
-          <Project 
-            v-for="(project, index) in getSelectedProjects()" 
-            :key="index" 
-            :project="project"
-            v-show="index < visibleProjects.length" />
-        </div>
-
-        <button class="projects__button projects__button--more" @click="loadMoreProjects" v-if="showButton">Mehr anzeigen</button>
+          <button class="projects__button projects__button--more" @click="loadMoreProjects" v-if="showButton">Mehr anzeigen</button>
+        </AnimationObserver>
       </div>
       
       <svgicon preserveAspectRatio="none" class="icon icon--triangle" name="triangle"></svgicon>
@@ -51,6 +58,7 @@
 
 <script>
   import SectionObserver from '../observer/SectionObserver';
+  import AnimationObserver from '../observer/AnimationObserver';
   import Project from '../partials/Project';
   
   import '../icons/triangle';
@@ -59,6 +67,7 @@
     name: 'md-projects',
     components: {
       SectionObserver,
+      AnimationObserver,
       Project
     },
     data() {
@@ -271,6 +280,17 @@
     }
   }
 
+  .projects__headline,
+  .projects__headline::after {
+    opacity: 0;
+  }
+  .animate .projects__headline {
+    animation: left-to-right 1s ease-in-out forwards;
+  }
+  .animate .projects__headline::after {
+    animation: left-to-right 1s .5s ease-in-out forwards;
+  }
+
   .icon--triangle {
     position: absolute;
     bottom: -35px;
@@ -284,6 +304,11 @@
     margin-top: 35px;
     display: flex;
     justify-content: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+  .animate .projects__filters {
+    opacity: 1;
   }
 
   .filters__filter {
@@ -356,9 +381,14 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
     @media(min-width: $breakpoint-tablet) {
       margin-top: 50px;
     }
+  }
+  .animate .projects__projects-wrapper {
+    opacity: 1;
   }
 
   .projects__button--more {

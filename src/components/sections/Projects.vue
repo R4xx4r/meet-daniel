@@ -36,18 +36,16 @@
           </div>
         </AnimationObserver>
 
-        <AnimationObserver :intersectionRatio="0.5">
-          <div class="projects__projects-wrapper">
-            
-            <Project 
-              v-for="(project, index) in getSelectedProjects()" 
-              :key="index" 
-              :project="project"
-              v-show="index < visibleProjects.length" />
-          </div>
+        <div class="projects__projects-wrapper">
+          
+          <Project 
+            v-for="(project, index) in getSelectedProjects()" 
+            :key="index" 
+            :project="project"
+            v-show="index < visibleProjects.length" />
+        </div>
 
-          <button class="projects__button projects__button--more" @click="loadMoreProjects" v-if="showButton">Mehr anzeigen</button>
-        </AnimationObserver>
+        <button class="projects__button projects__button--more" @click="loadMoreProjects" v-if="showButton">Mehr anzeigen</button>
       </div>
       
       <svgicon preserveAspectRatio="none" class="icon icon--triangle" name="triangle"></svgicon>
@@ -381,16 +379,10 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transition: opacity .5s ease-in-out;
     @media(min-width: $breakpoint-tablet) {
       margin-top: 50px;
     }
   }
-  .animate .projects__projects-wrapper {
-    opacity: 1;
-  }
-
   .projects__button--more {
     display: block;
     padding: 12px 30px;

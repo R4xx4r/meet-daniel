@@ -3,7 +3,7 @@ require('intersection-observer'); // https://www.npmjs.com/package/intersection-
 import Vue from 'vue';
 import App from './App.vue';
 
-import { modal } from './store/modal';
+import { store } from './store/store';
 import { mixins } from './mixins/mixins';
 
 import vueSmoothScroll from 'vue2-smooth-scroll'; // https://www.npmjs.com/package/vue2-smooth-scroll
@@ -22,7 +22,7 @@ Vue.use(SvgIcon, {
 });
 
 new Vue({
-  store: modal,
+  store,
   mixins: [mixins],
   render: h => h(App),
 }).$mount('#app');

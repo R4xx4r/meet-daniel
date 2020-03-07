@@ -1,12 +1,12 @@
 <template>
-  <div class="observer" :class="{'animate': startAnimation}" ref="animate">
+  <div class="observer observer--animation" :class="{'animate': startAnimation}" ref="animate">
     <slot></slot>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'md-observer',
+    name: 'md-animation-observer',
     props: {
       intersectionRatio: {
         type: Number,
@@ -35,7 +35,7 @@
     methods: {
       observerCallback(entries, observer) {
         entries.forEach(entry => {  
-          if (entry.intersectionRatio >= this.intersectionRatio) {
+          if (entry.intersectionRatio >= parseFloat(this.intersectionRatio)) {
             this.startAnimation = true;
             observer.unobserve(entry.target);
           }

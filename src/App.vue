@@ -34,13 +34,19 @@
     },
     computed: {
       ...mapState({
-        visible: 'modalVisible'
+        modalVisible: 'modalVisible',
+        inSection: 'inSection'
       })
     },
     watch: {
-      visible(newVal, oldVal) {
+      modalVisible(newVal, oldVal) {
         if (newVal != oldVal) {
           document.body.classList.toggle('modal-open');
+        }
+      },
+      inSection(newVal, oldVal) {
+        if (newVal != oldVal) {
+          // TODO: history push (url handling)
         }
       }
     }

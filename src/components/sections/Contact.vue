@@ -1,104 +1,112 @@
 <template>
   <section class="block block--contact contact" id="contact">
-    <div class="contact__content-wrapper content-wrapper">
-      <h2 class="contact__headline headline headline--2">Kontakt</h2>
+    <SectionObserver>
 
-      <div class="contact__intro">
-        Du hast eine Frage, oder möchtest gemeinsam etwas neues schaffen?<br />
-        Dann melde dich bei mir. Ich freue mich!
-      </div>
+      <div class="contact__content-wrapper content-wrapper">
+        <h2 class="contact__headline headline headline--2">Kontakt</h2>
 
-      <form 
-        class="contact__form form" 
-        @submit.prevent="submit()"
-        name="contact" 
-        method="POST" 
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-
-        <input type="hidden" name="form-name" value="contact" />
-
-        <div class="form__form-group form__form-group--hidden">
-          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-        </div>
-        
-        <div class="form__form-group">
-          <input 
-            class="form__input form__input--text" 
-            :class="{
-              'form__input--has-value': $v.form.name.$model,
-              'form__input--has-error': errors && $v.form.name.$error && !$v.form.name.required
-            }" 
-            type="text" 
-            v-model.trim="$v.form.name.$model">
-          <label class="form__label">Name *</label>
-        </div>
-        
-        <div class="form__form-group">
-          <input 
-            class="form__input form__input--text" 
-            :class="{
-              'form__input--has-value': $v.form.email.$model,
-              'form__input--has-error': errors && $v.form.email.$error && (!$v.form.email.required || !$v.form.email.email)
-            }" 
-            type="text" 
-            v-model.trim.lazy="$v.form.email.$model">
-          <label class="form__label">Email *</label>
+        <div class="contact__intro">
+          Du hast eine Frage, oder möchtest gemeinsam etwas neues schaffen?<br />
+          Dann melde dich bei mir. Ich freue mich!
         </div>
 
-        <div class="form__form-group form__form-group--last">
-          <textarea 
-            class="form__input form__input--textarea" 
-            :class="{'form__input--has-value': $v.form.message.$model}" 
-            rows="10"
-            :maxlength="messageMaxChars"
-            v-model.trim="$v.form.message.$model"
-          ></textarea>
-          <label class="form__label form__label--textarea">Nachricht</label>
+        <form 
+          class="contact__form form" 
+          @submit.prevent="submit()"
+          name="contact" 
+          method="POST" 
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+
+          <input type="hidden" name="form-name" value="contact" />
+
+          <div class="form__form-group form__form-group--hidden">
+            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+          </div>
           
-          <div class="form__message-counter" :class="{'form__message-counter--warn': form.message.length > (messageMaxChars - 15)}">
-            {{ form.message.length }} / {{ messageMaxChars }}
+          <div class="form__form-group">
+            <input 
+              class="form__input form__input--text" 
+              :class="{
+                'form__input--has-value': $v.form.name.$model,
+                'form__input--has-error': errors && $v.form.name.$error && !$v.form.name.required
+              }" 
+              type="text" 
+              v-model.trim="$v.form.name.$model">
+            <label class="form__label">Name *</label>
           </div>
+          
+          <div class="form__form-group">
+            <input 
+              class="form__input form__input--text" 
+              :class="{
+                'form__input--has-value': $v.form.email.$model,
+                'form__input--has-error': errors && $v.form.email.$error && (!$v.form.email.required || !$v.form.email.email)
+              }" 
+              type="text" 
+              v-model.trim.lazy="$v.form.email.$model">
+            <label class="form__label">Email *</label>
+          </div>
+
+          <div class="form__form-group form__form-group--last">
+            <textarea 
+              class="form__input form__input--textarea" 
+              :class="{'form__input--has-value': $v.form.message.$model}" 
+              rows="10"
+              :maxlength="messageMaxChars"
+              v-model.trim="$v.form.message.$model"
+            ></textarea>
+            <label class="form__label form__label--textarea">Nachricht</label>
+            
+            <div class="form__message-counter" :class="{'form__message-counter--warn': form.message.length > (messageMaxChars - 15)}">
+              {{ form.message.length }} / {{ messageMaxChars }}
+            </div>
+          </div>
+
+          <template v-if="errors">
+            <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.required">
+              Bitte gib deine Email Adresse ein.
+            </div>
+            <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.email">
+              Bitte gib eine valide Email Adresse ein.
+            </div>
+            <div class="form__input-error" v-if="$v.form.name.$error && !$v.form.name.required">
+              Bitte gib einen Namen ein.
+            </div>
+          </template>
+
+          <button class="form__button" type="submit" :disabled="submitStatus === 'PENDING'">Absenden</button>
+        </form>
+
+        <div class="contact__form-status contact__form-status--error" v-if="submitStatus === 'ERROR'">
+          Leider gab es einen Fehler. Bitte fülle, das Formular richtig aus und versuche es erneut. <br />
+          Wenn der Fehler, danach immer noch auftritt versuche es bitte in ein paar Minuten wieder oder schreibe mir eine <a href="mailto:daniel.murth@chello.at">Email</a>. Entschuldigung für die Unannehmlichkeiten.
+        </div>
+        
+        <div class="contact__form-status contact__form-status--pending" v-if="submitStatus === 'PENDING'">
+          Deine Anfrage wird verarbeitet.
         </div>
 
-        <template v-if="errors">
-          <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.required">
-            Bitte gib deine Email Adresse ein.
-          </div>
-          <div class="form__input-error" v-if="$v.form.email.$error && !$v.form.email.email">
-            Bitte gib eine valide Email Adresse ein.
-          </div>
-          <div class="form__input-error" v-if="$v.form.name.$error && !$v.form.name.required">
-            Bitte gib einen Namen ein.
-          </div>
-        </template>
+        <div class="contact__form-status contact__form-status--ok" v-if="submitStatus === 'OK'">
+          Vielen Dank für deine Nachricht. Ich werde mich so schnell wie möglich bei dir melden!
+        </div>
 
-        <button class="form__button" type="submit" :disabled="submitStatus === 'PENDING'">Absenden</button>
-      </form>
-
-      <div class="contact__form-status contact__form-status--error" v-if="submitStatus === 'ERROR'">
-        Leider gab es einen Fehler. Bitte fülle, das Formular richtig aus und versuche es erneut. <br />
-        Wenn der Fehler, danach immer noch auftritt versuche es bitte in ein paar Minuten wieder oder schreibe mir eine <a href="mailto:daniel.murth@chello.at">Email</a>. Entschuldigung für die Unannehmlichkeiten.
       </div>
-      
-      <div class="contact__form-status contact__form-status--pending" v-if="submitStatus === 'PENDING'">
-        Deine Anfrage wird verarbeitet.
-      </div>
-
-      <div class="contact__form-status contact__form-status--ok" v-if="submitStatus === 'OK'">
-        Vielen Dank für deine Nachricht. Ich werde mich so schnell wie möglich bei dir melden!
-      </div>
-
-    </div>
+    </SectionObserver>
   </section>
 </template>
 
 <script>
+  import SectionObserver from '../observer/SectionObserver';
+
   import { required, email } from 'vuelidate/lib/validators'
 
   export default {
     name: 'md-contact',
+    components: {
+      SectionObserver
+    },
     data() {
       return {
         form: {

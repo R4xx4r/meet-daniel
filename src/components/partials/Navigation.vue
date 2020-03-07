@@ -8,11 +8,11 @@
     </div>
 
     <ul class="menu" :class="{'menu--open': menuOpen}">
-      <li class="menu__item item" :class="{'menu__item--active': selectedIndex == index}" v-for="(menuItem,index) in menu.items" :key="index">
+      <li class="menu__item item" :class="{'menu__item--active': checkActive(menuItem)}" v-for="(menuItem,index) in menu.items" :key="index">
 
         <template v-if="isAnchorLink(menuItem.href)"> <!-- internal link -->
           
-          <a class="item__link link" @click="setActiveIndex(index)" :href="menuItem.href" v-smooth-scroll="{offset: -60}">{{ menuItem.title }}</a>
+          <a class="item__link link" @click="closeMenu()" :href="menuItem.href" v-smooth-scroll="{offset: -60}">{{ menuItem.title }}</a>
 
         </template>
 
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
+
   import '../icons';
 
   export default {
@@ -54,6 +56,11 @@
         require: true
       }
     },
+    computed: {
+      ...mapState({
+        inSection: 'inSection'
+      })
+    },
     methods: {
       getClassName() {
         if (this.menu.identifier) {
@@ -68,8 +75,14 @@
           return this.menu.identifier.toLowerCase() == 'social';
         }
       },
-      setActiveIndex(index) {
-        this.selectedIndex = index;
+      checkActive(menuItem) {
+        let href = menuItem.href;
+        if (this.isAnchorLink(href)) {
+          return href.substring(1) == this.inSection;
+        }
+        return false;
+      },
+      closeMenu() {
         this.menuOpen = false;
       },
       toggleMenu() {
@@ -206,6 +219,7 @@
   .menu--open {
     opacity: 1;
     visibility: visible;
+    z-index: 15;
   }
 
   .nav--social .menu__item {

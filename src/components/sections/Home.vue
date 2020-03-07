@@ -1,24 +1,27 @@
 <template>
   <section class="block block--home home" id="home">
     
-    <div class="canvas" id="particles-js"></div>
+    <SectionObserver>
 
-    <div class="home__content-wrapper content-wrapper">
-      <div class="home__content content">
+      <div class="canvas" id="particles-js"></div>
 
-        <div class="content__text">
-          Hallo, Ich heiße <span class="highlight underline">Daniel Murth</span>
-          und bin Web Developer.
+      <div class="home__content-wrapper content-wrapper">
+        <div class="home__content content">
+
+          <div class="content__text">
+            Hallo, Ich heiße <span class="highlight underline">Daniel Murth</span>
+            und bin Web Developer.
+          </div>
+          <div class="content__button button">
+            <a class="button__link link" href="#projects" v-smooth-scroll="{duration: 1200, offset: -60}">
+              Zu meinen Projekten
+              <svgicon class="icon icon--arrow" name="arrow"></svgicon>
+            </a>
+          </div>
         </div>
-        <div class="content__button button">
-          <a class="button__link link" href="#projects" v-smooth-scroll="{duration: 1200, offset: -60}">
-            Zu meinen Projekten
-            <svgicon class="icon icon--arrow" name="arrow"></svgicon>
-          </a>
-        </div>
+
       </div>
-
-    </div>
+    </SectionObserver>
 
     <Navigation class="home__navigation" :class="{'home__navigation--sticky': navSticky}" :menu="menu" />
 
@@ -26,13 +29,17 @@
 </template>
 
 <script>
+  import SectionObserver from '../observer/SectionObserver';
   import Navigation from '../partials/Navigation';
+  
   import '../icons/arrow';
+  
   import 'particles.js';
 
   export default {
     name: 'md-home',
     components: {
+      SectionObserver,
       Navigation
     },
     data() {

@@ -1,58 +1,64 @@
 <template>
   <section class="block block--projects projects" id="projects">
-    <div class="content-wrapper">
-      <h2 class="projects__headline headline headline--2">Projekte</h2>
+    <SectionObserver>
 
-      <div class="projects__filters filters">
-        
-        <div class="filters__dropdown-wrapper" v-cloak>
+      <div class="content-wrapper">
+        <h2 class="projects__headline headline headline--2">Projekte</h2>
+
+        <div class="projects__filters filters">
           
-          <select class="filters__dropdown" @change="setActiveIndex($event.target.value)" title="Wähle eine Kategorie">
-            <option
-              v-for="(category, index) in categoriesWithProjects" 
-              :key="index" 
-              :value="index"
-              v-text="category.categoryName"
-            ></option>
-          </select>
+          <div class="filters__dropdown-wrapper" v-cloak>
+            
+            <select class="filters__dropdown" @change="setActiveIndex($event.target.value)" title="Wähle eine Kategorie">
+              <option
+                v-for="(category, index) in categoriesWithProjects" 
+                :key="index" 
+                :value="index"
+                v-text="category.categoryName"
+              ></option>
+            </select>
+
+          </div>
+
+          <div 
+            class="filters__filter filter" 
+            :class="{'filter--active': selectedIndex == index}" 
+            v-for="(category, index) in categoriesWithProjects" 
+            :key="index" 
+            @click="setActiveIndex(index)"
+            v-text="category.categoryName"
+          ></div>
 
         </div>
 
-        <div 
-          class="filters__filter filter" 
-          :class="{'filter--active': selectedIndex == index}" 
-          v-for="(category, index) in categoriesWithProjects" 
-          :key="index" 
-          @click="setActiveIndex(index)"
-          v-text="category.categoryName"
-        ></div>
+        <div class="projects__projects-wrapper">
+          
+          <Project 
+            v-for="(project, index) in getSelectedProjects()" 
+            :key="index" 
+            :project="project"
+            v-show="index < visibleProjects.length" />
+        </div>
 
+        <button class="projects__button projects__button--more" @click="loadMoreProjects" v-if="showButton">Mehr anzeigen</button>
       </div>
+      
+      <svgicon preserveAspectRatio="none" class="icon icon--triangle" name="triangle"></svgicon>
 
-      <div class="projects__projects-wrapper">
-        
-        <Project 
-          v-for="(project, index) in getSelectedProjects()" 
-          :key="index" 
-          :project="project"
-          v-show="index < visibleProjects.length" />
-      </div>
-
-      <button class="projects__button projects__button--more" @click="loadMoreProjects" v-if="showButton">Mehr anzeigen</button>
-    </div>
-    
-    <svgicon preserveAspectRatio="none" class="icon icon--triangle" name="triangle"></svgicon>
-  
+    </SectionObserver>
   </section>
 </template>
 
 <script>
+  import SectionObserver from '../observer/SectionObserver';
   import Project from '../partials/Project';
+  
   import '../icons/triangle';
 
   export default {
     name: 'md-projects',
     components: {
+      SectionObserver,
       Project
     },
     data() {

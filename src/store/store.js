@@ -4,9 +4,10 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export const state = {
-  modalVisible: false
+  modalVisible: false,
+  inSection: ''
 }
 
-export const modal = new Vuex.Store({
+export const store = new Vuex.Store({
   state
 });

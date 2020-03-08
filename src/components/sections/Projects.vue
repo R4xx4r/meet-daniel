@@ -36,14 +36,17 @@
           </div>
         </AnimationObserver>
 
-        <div class="projects__projects-wrapper">
+        <AnimationObserver :intersectionRatio="0.5">
+          <div class="projects__projects-wrapper">
+            
+            <Project 
+              v-for="(project, index) in getSelectedProjects()" 
+              :key="index" 
+              :project="project"
+              v-show="index < visibleProjects.length" />
           
-          <Project 
-            v-for="(project, index) in getSelectedProjects()" 
-            :key="index" 
-            :project="project"
-            v-show="index < visibleProjects.length" />
-        </div>
+          </div>
+        </AnimationObserver>
 
         <button class="projects__button projects__button--more" @click="loadMoreProjects" v-if="showButton">Mehr anzeigen</button>
       </div>
@@ -379,10 +382,20 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    // opacity: 0;
+    // transform:translateY(50%);
+    // transition: opacity 1.5s ease-in-out,
+    //             transform 1s ease-in-out;
     @media(min-width: $breakpoint-tablet) {
       margin-top: 50px;
     }
   }
+  // .animate .projects__projects-wrapper {
+  //   opacity: 1;
+  //   transform: none;
+  // }
+
   .projects__button--more {
     display: block;
     padding: 12px 30px;

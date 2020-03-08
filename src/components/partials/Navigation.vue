@@ -2,7 +2,7 @@
   
   <nav class="nav" :class="getClassName()">
 
-    <div class="nav__toggle toggle" :class="{'nav__toggle--open': menuOpen}" @click="toggleMenu()">
+    <div class="nav__toggle toggle" :class="{'nav__toggle--open': menuOpen}" @click="handleMobileMenu()">
       <div class="toggle__text">Menü</div>
       <span class="toggle__bar"></span>
     </div>
@@ -46,7 +46,7 @@
     name: 'navigation',
     data() {
       return {
-        selectedIndex: 0,
+        navPosition: 0,
         menuOpen: false
       }
     },
@@ -91,7 +91,20 @@
         } else {
           this.menuOpen = true;
         }
+      },
+      handleMobileMenu() {
+        // Get the current scroll position
+        let currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (currentScrollPosition < this.navPosition) {
+          window.scrollTo({top: this.navPosition, behavior: 'smooth'});
+        }
+
+        this.toggleMenu();
       }
+    },
+    mounted() {
+      this.navPosition = document.querySelector('.home__navigation').offsetTop;
     }
   }
 </script>

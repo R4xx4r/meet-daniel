@@ -85,7 +85,7 @@
         window.particlesJS("particles-js", {
           "particles": {
             "number": {
-              "value": 360,
+              "value": 200,
               "density": {
                 "enable": true,
                 "value_area": 800
@@ -101,44 +101,44 @@
                 "color": "#000000"
               },
               "polygon": {
-                "nb_sides": 5
+                "nb_sides": 6
               },
               "image": {
-                "src": "",
-                "width": 170,
-                "height": 50
+                "src": "img/github.svg",
+                "width": 100,
+                "height": 100
               }
             },
             "opacity": {
-              "value": 0.6313181133058181,
-              "random": true,
+              "value": 0.25,
+              "random": false,
               "anim": {
-                "enable": true,
-                "speed": 0.8791208791208792,
-                "opacity_min": 0,
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
                 "sync": false
               }
             },
             "size": {
-              "value": 4,
+              "value": 3,
               "random": true,
               "anim": {
                 "enable": false,
-                "speed": 4,
-                "size_min": 0.3,
+                "speed": 25,
+                "size_min": 0.1,
                 "sync": false
               }
             },
             "line_linked": {
-              "enable": false,
-              "distance": 150,
+              "enable": true,
+              "distance": 0,
               "color": "#ffffff",
-              "opacity": 0.4,
+              "opacity": 0.29,
               "width": 1
             },
             "move": {
               "enable": true,
-              "speed": 1,
+              "speed": 3,
               "direction": "top",
               "random": true,
               "straight": false,
@@ -147,7 +147,7 @@
               "attract": {
                 "enable": false,
                 "rotateX": 600,
-                "rotateY": 600
+                "rotateY": 1200
               }
             }
           },
@@ -155,31 +155,31 @@
             "detect_on": "canvas",
             "events": {
               "onhover": {
-                "enable": false,
-                "mode": "repulse"
+                "enable": true,
+                "mode": "grab"
               },
               "onclick": {
                 "enable": false,
-                "mode": "repulse"
+                "mode": "push"
               },
               "resize": true
             },
             "modes": {
               "grab": {
-                "distance": 400,
+                "distance": 250,
                 "line_linked": {
-                  "opacity": 1
+                  "opacity": 0.25
                 }
               },
               "bubble": {
-                "distance": 250,
-                "size": 0,
+                "distance": 400,
+                "size": 40,
                 "duration": 2,
-                "opacity": 0,
+                "opacity": 8,
                 "speed": 3
               },
               "repulse": {
-                "distance": 400,
+                "distance": 200,
                 "duration": 0.4
               },
               "push": {

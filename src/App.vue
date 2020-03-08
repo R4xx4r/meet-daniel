@@ -46,7 +46,7 @@
       },
       inSection(newVal, oldVal) {
         if (newVal != oldVal) {
-          // TODO: history push (url handling)
+          window.location.hash = '#' + newVal;
         }
       }
     }

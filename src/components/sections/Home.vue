@@ -85,7 +85,7 @@
         window.particlesJS("particles-js", {
           "particles": {
             "number": {
-              "value": 200,
+              "value": 250,
               "density": {
                 "enable": true,
                 "value_area": 800
@@ -110,7 +110,7 @@
               }
             },
             "opacity": {
-              "value": 0.25,
+              "value": 0.35,
               "random": false,
               "anim": {
                 "enable": false,

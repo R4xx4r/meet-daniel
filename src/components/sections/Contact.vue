@@ -86,7 +86,7 @@
         </AnimationObserver>
 
         <div class="contact__form-status contact__form-status--error" v-if="submitStatus === 'ERROR'">
-          Leider gab es einen Fehler. Bitte fülle, das Formular richtig aus und versuche es erneut. <br />
+          Leider gab es einen Fehler. Bitte fülle, das Formular richtig aus und versuche es erneut.
           Wenn der Fehler, danach immer noch auftritt versuche es bitte in ein paar Minuten wieder oder schreibe mir eine <a href="mailto:daniel.murth@chello.at">Email</a>. Entschuldigung für die Unannehmlichkeiten.
         </div>
         
@@ -330,6 +330,9 @@
   .form__input-error {
     color: darken($color-coral, 10%);
   }
+  .form__input-error {
+    text-align: center;
+  }
 
   .form__input--has-value ~.form__label--textarea,
   .form__input:focus ~.form__label--textarea {
@@ -361,7 +364,12 @@
   }
 
   .contact__form-status {
-    margin-top: 25px;
+    margin: 25px auto 0;
     text-align: center;
+    max-width: 375px;
+
+    @media(min-width: $breakpoint-tablet) {
+      max-width: 500px;
+    }
   }
 </style>

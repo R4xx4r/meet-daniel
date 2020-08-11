@@ -93,7 +93,8 @@ export default {
               modal: {
                 intro: "Website Relaunch",
                 description:
-                  "Hier habe ich der alten Seite welche auf einem Online Webbaukasten basierte einen neuen Touch verliehen. Ich habe mich für Nuxt.js entschieden und der Seite einen modernen Anstrich verpasst.",
+                  "Hier wurde einer auf einem Webseitenbaukasten basierenden Homepage ein neuer Anstrich basierend auf Nuxt.js verliehen.",
+                  href: "https://www.geppner-installationen.at/",
               },
             },
             {

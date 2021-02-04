@@ -28,7 +28,7 @@
           <AnimationObserver :intersectionRatio="0.5" :style="getObserverBlockWidth()">
             <div class="personal__aboutme aboutme">
               <div class="aboutme__image-wrapper">
-                <img class="aboutme__image" :src="mixinGetImageSrc('portrait.jpg')" alt="Portrait Daniel Murth" />
+                <img class="aboutme__image" :src="mixinGetImageSrc('portrait.png')" alt="Portrait Daniel Murth" />
               </div>
 
               <h3 class="aboutme__headline headline headline--3">Wer ist dieser Typ eigentlich?</h3>

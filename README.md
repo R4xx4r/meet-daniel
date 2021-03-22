@@ -1,15 +1,8 @@
 # MEET DANIEL
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ddd38042-da46-47ba-bec5-9d31116ebf6d/deploy-status)](https://app.netlify.com/sites/meetdaniel/deploys)
 
 > Welcome to my personal portfolio page.
-> Welcome to [https://meetdaniel.netlify.com/](https://meetdaniel.netlify.com/)
 
 This page is built with [Vue.js](https://vuejs.org/) and created via [Vue CLI](https://cli.vuejs.org/). For more infos take a look at their pages. They have great docs! :thumbsup: :muscle: 
-<br>
-Also I decided to deploy it via [Netlify](https://www.netlify.com/), because it's so so easy und just cool! 
-
-## Deployment process
-As I mentioned before I deploy my app via [Netlify](https://www.netlify.com/). For this I work in two branches. The `master` branch which will be deployed automatically if I push something in it and the `development` branch, where I try to create all the magic :wink:
 
 ## Project setup
 It's really simple, or at least I hope it is :wink:
